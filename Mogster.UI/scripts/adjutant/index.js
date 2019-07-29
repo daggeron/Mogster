@@ -1,13 +1,13 @@
-﻿const { readdir, resolve } = require('sandboxfs');
-const { getCurrentZone } = require('helper');
+﻿const sandboxfs = require('sandboxfs');
+const helper = require('helper');
 
 var zoneList = new Set();
 var cachedMap = new Map();
 var encounterMap = new Map();
 
 function scanForEncounters() {
-    readdir("./adjutant/encounters").forEach(element => {
-        let encounter = require(resolve("./adjutant/encounters", element));
+    sandboxfs.readdir("./adjutant/encounters").forEach(element => {
+        let encounter = require(sandboxfs.resolve("./adjutant/encounters", element));
 
         if (zoneList.has(encounter.zone) ||
             cachedMap.has(encounter.zone) ||
@@ -31,14 +31,12 @@ emitter.on("ZoneChanged", zone => {
             encounter.emitter.emit(event, payload);
         });
 
+        
+        //Send("RemotePlay", 'getout.ogg');
         encounter.watchStart();
     }
     console.log("Zone changed to: ", zone);
 });
-
-function forceZoneResend() {
-
-}
 
 try {
     scanForEncounters();
@@ -46,8 +44,9 @@ try {
     //Keep pinging for the current zone.  We do it this way because if FFXIv is closed then open it should resume functionality. (OR we are in a hot reload)  
     
     let zoneChecker = setInterval(function () {
-        let zone = getCurrentZone();
-        if (zone !== 0) {
+        let zone = helper.getCurrentZone();
+        if (zone.ZoneID !== 0) {
+            console.log("Received zone.  Clearing interval");
             emitter.emit("ZoneChanged", zone);
             clearInterval(zoneChecker);
         }
@@ -55,4 +54,8 @@ try {
     
 } catch (error) {
     console.log(error);
+}
+
+function Send(event, payload) {
+    emitter.emit(event, payload);
 }

@@ -1,8 +1,7 @@
 ﻿{
   "compilerOptions": {
-    // Disabled because of https://github.com/Microsoft/TypeScript/issues/29172
-    // "outDir": "dist",
-    "outDir": "distjs",
+
+    "outDir": "dist-js",
     "target": "esnext", // Node.js 8
     "module": "commonjs",
     "moduleResolution": "node",
@@ -21,13 +20,9 @@
     "experimentalDecorators": true,
     "lib": [ "esnext" ]
   },
-  "paths": {
-    "@models/*": [ "models/*" ]
-  },
-  "include": [
-    "src/**/*",
-    "scripts/**/*"
-  ],
+   "include": [
+    "source/**/*"
+    ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"

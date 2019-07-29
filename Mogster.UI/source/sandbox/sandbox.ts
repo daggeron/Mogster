@@ -18,6 +18,7 @@ if (process.send === undefined) {
 
 var scriptsFolder = process.argv[2];
 var rootPath = resolve(scriptsFolder, '../');
+console.log(resolve(rootPath, 'plugins/Mogster.Core.dll'));
 
 const ZoneReader = edge.func({
     assemblyFile: resolve(rootPath, 'plugins/Mogster.Core.dll'),

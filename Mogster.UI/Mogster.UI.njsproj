@@ -34,145 +34,91 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="scripts\adjutant\encounters\inn.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="scripts\adjutant\encounters\test.test">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include=".gitignore" />
+    <Content Include="package.json" />
+    <Content Include="scripts\adjutant\encounters\inn.js" />
+    <Content Include="scripts\adjutant\encounters\test.test" />
     <Content Include="scripts\adjutant\encounters\titaniaex.js" />
     <Content Include="scripts\adjutant\index.js" />
-    <Content Include="scripts\libs\mobx\CHANGELOG.md" />
-    <Content Include="scripts\libs\mobx\lib\mobx.es6.js" />
-    <Content Include="scripts\libs\mobx\lib\mobx.es6.js.map" />
-    <Content Include="scripts\libs\mobx\lib\mobx.js" />
-    <Content Include="scripts\libs\mobx\lib\mobx.js.flow" />
-    <Content Include="scripts\libs\mobx\lib\mobx.js.map" />
-    <Content Include="scripts\libs\mobx\lib\mobx.min.js" />
-    <Content Include="scripts\libs\mobx\lib\mobx.module.js" />
-    <Content Include="scripts\libs\mobx\lib\mobx.module.js.map" />
-    <Content Include="scripts\libs\mobx\lib\mobx.umd.js" />
-    <Content Include="scripts\libs\mobx\lib\mobx.umd.js.map" />
-    <Content Include="scripts\libs\mobx\lib\mobx.umd.min.js" />
-    <Content Include="scripts\libs\mobx\LICENSE" />
-    <Content Include="scripts\libs\mobx\package.json" />
-    <Content Include="scripts\libs\mobx\README.md" />
-    <Content Include="scripts\testingevents\index.jsb">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="scripts\test\index.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="scripts\test\scratchpad.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\ffxiv\libs\mobx\CHANGELOG.md" />
-    <Content Include="src\ffxiv\libs\mobx\lib\mobx.es6.js.map" />
-    <Content Include="src\ffxiv\libs\mobx\lib\mobx.js.flow" />
-    <Content Include="src\ffxiv\libs\mobx\lib\mobx.js.map" />
-    <Content Include="src\ffxiv\libs\mobx\lib\mobx.module.js.map" />
-    <Content Include="src\ffxiv\libs\mobx\lib\mobx.umd.js.map" />
-    <Content Include="src\ffxiv\libs\mobx\LICENSE" />
-    <Content Include="src\ffxiv\libs\mobx\package.json" />
-    <Content Include="src\ffxiv\libs\mobx\README.md" />
-    <Content Include="src\index.js" />
-    <Content Include="package.json" />
-    <Content Include="scripts\test\index2.js" />
+    <Content Include="scripts\Combatant.js" />
+    <Content Include="scripts\combined.log" />
+    <Content Include="scripts\error.log" />
+    <Content Include="scripts\libs\combatant.js" />
+    <Content Include="scripts\testingevents\index.jsb" />
     <Content Include="scripts\test\encounters\titaniaex.js" />
-    <Content Include="src\discord\client.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\commands\FinalFantasy\srank.js" />
-    <Content Include="src\discord\commands\FinalFantasy\dps.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\commands\random\cat.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\commands\random\trumpquote.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\config.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\fork.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\lib\structures\AudioManger.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\discord\lib\extensions\SneyraGuild.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\overlay\notification\css\animate.css" />
-    <Content Include="src\overlay\notification\css\normalize.css" />
-    <Content Include="src\overlay\notification\css\noty.css" />
-    <Content Include="src\overlay\notification\css\ns-default.css" />
-    <Content Include="src\overlay\notification\css\ns-style-attached.css" />
-    <Content Include="src\overlay\notification\css\ns-style-bar.css" />
-    <Content Include="src\overlay\notification\css\ns-style-growl.css" />
-    <Content Include="src\overlay\notification\css\ns-style-other.css" />
-    <Content Include="src\overlay\notification\font-awesome\css\font-awesome.min.css" />
-    <Content Include="src\overlay\notification\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="src\overlay\notification\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="src\overlay\notification\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="src\overlay\notification\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="src\overlay\notification\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="src\overlay\notification\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-bold.eot" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-bold.svg" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-bold.ttf" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-bold.woff" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-book.eot" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-book.svg" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-book.ttf" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-book.woff" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-light.eot" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-light.svg" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-light.ttf" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-light.woff" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-medium.eot" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-medium.svg" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-medium.ttf" />
-    <Content Include="src\overlay\notification\fonts\gothamrnd-medium.woff" />
-    <Content Include="src\overlay\notification\fonts\stylesheet.css" />
-    <Content Include="src\overlay\notification\js\bounce.js" />
-    <Content Include="src\overlay\notification\js\classie.js" />
-    <Content Include="src\overlay\notification\js\howler.min.js" />
-    <Content Include="src\overlay\notification\js\mo.min.js" />
-    <Content Include="src\overlay\notification\js\modernizr.custom.js" />
-    <Content Include="src\overlay\notification\js\notificationFx.js" />
-    <Content Include="src\overlay\notification\js\noty.js" />
-    <Content Include="src\overlay\notification\js\snap.svg-min.js" />
-    <Content Include="src\overlay\notification\js\store2.min.js" />
-    <Content Include="src\overlay\notification\js\velocity.min.js" />
-    <Content Include="src\overlay\notification\notification.html" />
-    <Content Include="src\overlay\notification\notification.js" />
-    <Content Include="src\overlay\notification\preload-simple.js" />
-    <Content Include="src\overlay\sound\js\howler.min.js" />
-    <Content Include="src\overlay\sound\preload-simple.js" />
-    <Content Include="src\overlay\sound\sound.html" />
-    <Content Include="src\overlay\sound\sound.js" />
-    <Content Include="src\sandbox\headless_sandbox.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\sandbox\sandbox.ts">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\static\Mog.ico" />
-    <Content Include="src\static\moogle.ico" />
-    <Content Include="src\test.json">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\test2.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\test3.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\testSandBox.js">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="scripts\test\index.js" />
+    <Content Include="scripts\test\index2.js" />
+    <Content Include="scripts\test\libs\mobx\CHANGELOG.md" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.es6.js" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.es6.js.map" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.js" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.js.flow" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.js.map" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.min.js" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.module.js" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.module.js.map" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.umd.js" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.umd.js.map" />
+    <Content Include="scripts\test\libs\mobx\lib\mobx.umd.min.js" />
+    <Content Include="scripts\test\libs\mobx\LICENSE" />
+    <Content Include="scripts\test\libs\mobx\package.json" />
+    <Content Include="scripts\test\libs\mobx\README.md" />
+    <Content Include="scripts\test\scratchpad.js" />
+    <Content Include="source\index.js" />
+    <Content Include="source\overlay\notification\css\animate.css" />
+    <Content Include="source\overlay\notification\css\normalize.css" />
+    <Content Include="source\overlay\notification\css\noty.css" />
+    <Content Include="source\overlay\notification\css\ns-default.css" />
+    <Content Include="source\overlay\notification\css\ns-style-attached.css" />
+    <Content Include="source\overlay\notification\css\ns-style-bar.css" />
+    <Content Include="source\overlay\notification\css\ns-style-growl.css" />
+    <Content Include="source\overlay\notification\css\ns-style-other.css" />
+    <Content Include="source\overlay\notification\font-awesome\css\font-awesome.min.css" />
+    <Content Include="source\overlay\notification\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="source\overlay\notification\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="source\overlay\notification\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="source\overlay\notification\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="source\overlay\notification\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="source\overlay\notification\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-bold.eot" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-bold.svg" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-bold.ttf" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-bold.woff" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-book.eot" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-book.svg" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-book.ttf" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-book.woff" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-light.eot" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-light.svg" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-light.ttf" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-light.woff" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-medium.eot" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-medium.svg" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-medium.ttf" />
+    <Content Include="source\overlay\notification\fonts\gothamrnd-medium.woff" />
+    <Content Include="source\overlay\notification\fonts\stylesheet.css" />
+    <Content Include="source\overlay\notification\js\bounce.js" />
+    <Content Include="source\overlay\notification\js\classie.js" />
+    <Content Include="source\overlay\notification\js\howler.min.js" />
+    <Content Include="source\overlay\notification\js\mo.min.js" />
+    <Content Include="source\overlay\notification\js\modernizr.custom.js" />
+    <Content Include="source\overlay\notification\js\notificationFx.js" />
+    <Content Include="source\overlay\notification\js\noty.js" />
+    <Content Include="source\overlay\notification\js\snap.svg-min.js" />
+    <Content Include="source\overlay\notification\js\store2.min.js" />
+    <Content Include="source\overlay\notification\js\velocity.min.js" />
+    <Content Include="source\overlay\notification\notification.html" />
+    <Content Include="source\overlay\notification\notification.js" />
+    <Content Include="source\overlay\notification\preload-simple.js" />
+    <Content Include="source\overlay\sound\js\howler.min.js" />
+    <Content Include="source\overlay\sound\preload-simple.js" />
+    <Content Include="source\overlay\sound\sound.html" />
+    <Content Include="source\overlay\sound\sound.js" />
+    <Content Include="source\static\Mog.ico" />
+    <Content Include="source\static\moogle.ico" />
+    <Content Include="static\icon.ico" />
+    <Content Include="static\Mog.ico" />
+    <Content Include="static\moogle.ico" />
     <Content Include="tsconfig.json" />
     <Content Include="yarn.lock" />
   </ItemGroup>
@@ -180,111 +126,86 @@
     <Folder Include="scripts\" />
     <Folder Include="scripts\adjutant\" />
     <Folder Include="scripts\adjutant\encounters\" />
-    <Folder Include="scripts\adjutant\models\" />
     <Folder Include="scripts\libs\" />
-    <Folder Include="scripts\libs\mobx\" />
-    <Folder Include="scripts\libs\mobx\lib\" />
-    <Folder Include="scripts\libs\mobx\lib\api\" />
-    <Folder Include="scripts\libs\mobx\lib\core\" />
-    <Folder Include="scripts\libs\mobx\lib\types\" />
-    <Folder Include="scripts\libs\mobx\lib\utils\" />
-    <Folder Include="scripts\libs\bob\" />
     <Folder Include="scripts\testingevents\" />
     <Folder Include="scripts\test\" />
-    <Folder Include="scripts\test\ifrit\" />
-    <Folder Include="scripts\test\models\" />
     <Folder Include="scripts\test\encounters\" />
-    <Folder Include="src\" />
-    <Folder Include="src\discord\" />
-    <Folder Include="src\discord\commands\" />
-    <Folder Include="src\discord\commands\FinalFantasy\" />
-    <Folder Include="src\discord\commands\Random\" />
-    <Folder Include="src\discord\lib\" />
-    <Folder Include="src\discord\lib\extensions\" />
-    <Folder Include="src\discord\lib\structures\" />
-    <Folder Include="src\ffxiv\" />
-    <Folder Include="src\ffxiv\libs\" />
-    <Folder Include="src\ffxiv\libs\bob\" />
-    <Folder Include="src\ffxiv\libs\mobx\" />
-    <Folder Include="src\ffxiv\libs\mobx\lib\" />
-    <Folder Include="src\ffxiv\libs\mobx\lib\api\" />
-    <Folder Include="src\ffxiv\libs\mobx\lib\core\" />
-    <Folder Include="src\ffxiv\libs\mobx\lib\types\" />
-    <Folder Include="src\ffxiv\libs\mobx\lib\utils\" />
-    <Folder Include="src\overlay\" />
-    <Folder Include="src\overlay\notification\" />
-    <Folder Include="src\overlay\notification\css\" />
-    <Folder Include="src\overlay\notification\font-awesome\" />
-    <Folder Include="src\overlay\notification\font-awesome\css\" />
-    <Folder Include="src\overlay\notification\font-awesome\fonts\" />
-    <Folder Include="src\overlay\notification\fonts\" />
-    <Folder Include="src\overlay\notification\js\" />
-    <Folder Include="src\overlay\sound\" />
-    <Folder Include="src\overlay\sound\js\" />
-    <Folder Include="src\sandbox\" />
-    <Folder Include="src\static\" />
+    <Folder Include="scripts\test\libs\" />
+    <Folder Include="scripts\test\libs\mobx\" />
+    <Folder Include="scripts\test\libs\mobx\lib\" />
+    <Folder Include="scripts\test\libs\mobx\lib\api\" />
+    <Folder Include="scripts\test\libs\mobx\lib\core\" />
+    <Folder Include="scripts\test\libs\mobx\lib\types\" />
+    <Folder Include="scripts\test\libs\mobx\lib\utils\" />
+    <Folder Include="source\" />
+    <Folder Include="source\ffxiv\" />
+    <Folder Include="source\overlay\" />
+    <Folder Include="source\overlay\notification\" />
+    <Folder Include="source\overlay\notification\css\" />
+    <Folder Include="source\overlay\notification\font-awesome\" />
+    <Folder Include="source\overlay\notification\font-awesome\css\" />
+    <Folder Include="source\overlay\notification\font-awesome\fonts\" />
+    <Folder Include="source\overlay\notification\fonts\" />
+    <Folder Include="source\overlay\notification\js\" />
+    <Folder Include="source\overlay\sound\" />
+    <Folder Include="source\overlay\sound\js\" />
+    <Folder Include="source\sandbox\" />
+    <Folder Include="source\static\" />
+    <Folder Include="static\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\action.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\actiondecorator.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\autorun.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\become-observed.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\computed.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\configure.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\decorate.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\extendobservable.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\extras.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\flow.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\intercept-read.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\intercept.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\iscomputed.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\isobservable.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\object-api.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\observable.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\observabledecorator.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\observe.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\tojs.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\trace.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\transaction.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\api\when.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\action.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\atom.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\computedvalue.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\derivation.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\globalstate.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\observable.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\reaction.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\core\spy.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\internal.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\mobx.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\dynamicobject.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\intercept-utils.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\listen-utils.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\modifiers.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\observablearray.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\observablemap.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\observableobject.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\observableset.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\observablevalue.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\types\type-utils.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\utils\comparer.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\utils\decorators.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\utils\eq.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\utils\iterable.d.ts" />
-    <TypeScriptCompile Include="scripts\libs\mobx\lib\utils\utils.d.ts" />
-    <TypeScriptCompile Include="src\ffxiv\Combatant.ts" />
-    <TypeScriptCompile Include="src\ffxiv\CombatantManager.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\ffxiv\bindings.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\ffxiv\EventStream.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="src\ffxiv\internal.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\action.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\actiondecorator.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\autorun.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\become-observed.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\computed.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\configure.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\decorate.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\extendobservable.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\extras.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\flow.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\intercept-read.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\intercept.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\iscomputed.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\isobservable.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\object-api.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\observable.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\observabledecorator.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\observe.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\tojs.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\trace.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\transaction.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\when.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\action.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\atom.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\computedvalue.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\derivation.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\globalstate.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\observable.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\reaction.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\spy.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\internal.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\mobx.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\dynamicobject.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\intercept-utils.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\listen-utils.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\modifiers.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observablearray.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observablemap.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observableobject.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observableset.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observablevalue.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\type-utils.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\comparer.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\decorators.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\eq.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\iterable.d.ts" />
+    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\utils.d.ts" />
+    <TypeScriptCompile Include="source\ffxiv\bindings.ts" />
+    <TypeScriptCompile Include="source\ffxiv\Combatant.ts" />
+    <TypeScriptCompile Include="source\ffxiv\CombatantManager.ts" />
+    <TypeScriptCompile Include="source\ffxiv\internal.ts" />
+    <TypeScriptCompile Include="source\sandbox\sandbox.ts" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

@@ -29,15 +29,16 @@ const store = new Store({
 
 const { fork } = require('child_process');
 //const Notifications = require('./overlay/notification/notification');
-const SoundWindow = require('./overlay/sound/sound');
+const SoundWindow = require('./soundplayer/sound');
 
-if (store.get("discord.use")) {
+/*if (store.get("discord.use")) {
     this.VoiceClient = require('./discord/fork').VoiceClient;
-} 
+}*/
 
 //process.env.EDGE_APP_ROOT = path.resolve(rootPath, 'plugins');
 //process.env.EDGE_USE_CORECLR = 1;
 //This needs to be updated`
+
 var edge = require('electron-edge-js');
 var ipcBridge = edge.func({
     assemblyFile: path.resolve(rootPath, 'plugins/Mogster.Core.dll'),
@@ -59,12 +60,12 @@ class MogsterUI {
         this.initApp();
         this.initIPC();
         await this.startSandbox();
+
         if (store.get("discord.use"))
             this.startDiscord();
     }
 
     async startDiscord() {
-        //let token = config.get("discord.token");
         let token = store.get("discord.token");
         let channelID = store.get("discord.channel");
         let guildID = store.get("discord.guild");
@@ -76,14 +77,20 @@ class MogsterUI {
 
         var restartMethod = this.reloadSandbox.bind(this);
         this.voiceClient.on('exit', function (code) {
-            log.error("HeadlessSandbox process terminated unexpectedly. Restarting in 5 seconds.")
-            setTimeout(restartMethod, 5000);
-        })
+            if (store.get("discord.use")) {
+                log.error("HeadlessSandbox process terminated unexpectedly. Restarting in 5 seconds.")
+                setTimeout(restartMethod, 5000);
+            } else {
+                this.voiceClient = null;
+                ipcMain.removeListener('Discord', discordListener);
+            }
 
-        ipcMain.on('Discord', (data) => {
+        })
+        let discordListener = (data) => {
             log.info('discord ', data);
             this.voiceClient.send(data);
-        });
+        }
+        ipcMain.on('Discord', discordListener);
 
         this.voiceClient.on('message', data => {
 
@@ -101,18 +108,16 @@ class MogsterUI {
         log.debug("Shutting down DiscordBot");
 
         if (this.voiceClient !== null) {
-            this.voiceClient.send({ 'event': 'DisconnectFromDiscord', 'payload': 'ignored' });
+            this.voiceClient.send({ 'event': 'RemoteShutdown', 'payload': 'ignored' });
 
-            await new Promise(resolve => setTimeout(resolve, 9500));
-            this.voiceClient.removeAllListeners();
-            this.voiceClient.kill();
+            setTimeout(() => { this.voiceClient.kill() }, 2000);
         }
     }
 
 
     async startSandbox() {
         log.debug('Forking');
-        this.forkProcess = fork(path.resolve(app.getAppPath(),'distjs', 'src/sandbox/sandbox.js'),
+        this.forkProcess = fork(path.resolve(app.getAppPath(),'dist-js', 'sandbox/sandbox.js'),
             [path.resolve(rootPath, 'scripts')], {
                 stdio: ['inherit', 'inherit', 'inherit', 'ipc']
             });
@@ -185,7 +190,7 @@ class MogsterUI {
         app.on('ready', () => {
             this.createNotificationWindow();
 
-            this.tray = new Tray(path.resolve(__dirname,'../../', 'static/moogle.ico'));
+            this.tray = new Tray(path.resolve(__dirname,'../', 'static/moogle.ico'));
             const menu = Menu.buildFromTemplate([
                 {
                     label: 'Reload Scripts', click: (item, window, event) => {
@@ -193,6 +198,31 @@ class MogsterUI {
                         this.reloadSandbox();
                     }
                 },
+                {
+                    label: 'Stop local Audio Playback', click: (item, window, event) => {
+                        ipcMain.emit("Discord", { 'event': 'RemoteStop', 'payload': '' });
+                        ipcMain.emit("StopSound");
+                    }
+                },
+                {
+                    label: "Discord", submenu: [{
+                        label: 'Use Discord', type: 'checkbox', checked: store.get("discord.use"), click: (item, window, event) => {
+                            if (item.checked) {
+                                store.set("discord.use", true)
+                                this.startDiscord();
+                            } else {
+                                store.set("discord.use", false)
+                                this.shutdownDiscord();
+                            }
+                        } 
+                    }, {
+                            label: 'Stop local Audio Playback', click: (item, window, event) => {
+                                ipcMain.emit("Discord", { 'event': 'RemoteStop', 'payload': '' });
+                                ipcMain.emit("StopSound");
+                            }
+                        }]
+                },
+                
                 { type: 'separator' },
                 { role: 'quit' } // "role": system prepared action menu
             ]);

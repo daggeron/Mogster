@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+    <script type="text/javascript" src="./js/howler.min.js"></script>
+    <script>
+        const { ipcRenderer } = require('electron')
+        const rootPath = require('electron-root-path').rootPath;
+
+        const path = require('path');
+
+        function PlaySound(sound) {
+            console.log(sound);
+            new Howl({
+                src: [sound],
+                autoplay: true,
+                volume: 0.4,
+                onend: function () {
+                    test.unload();
+                }
+            });
+        }
+
+        ipcRenderer.on('StopSound', (event, sound) => {
+            Howler.unload();
+        })
+
+        ipcRenderer.on('PlaySound', (event, sound) => {
+            
+            PlaySound(path.resolve(rootPath, "audio", sound));
+        })
+    </script>
+</body>
+</html>

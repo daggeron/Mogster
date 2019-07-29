@@ -11,9 +11,14 @@ const { EventEmitter2 } = require("eventemitter2")
 const { Combatant } = require('../../libs/combatant');
 const { observe, decorate, observable } = require('mobx');
 
+function Send(emitter, event, payload) {
+    emitter.emit(event, payload);
+}
+
 class HourglassInn {
-    constructor() {
+    constructor(remoteEmitter) {
         this.eventEmitter = new EventEmitter2();
+        this.remoteEmitter = remoteEmitter;
     }
     static get zone() {
         return 178;
@@ -52,7 +57,7 @@ class HourglassInn {
     start() {
         //Removes the listener we used to monitor chat for the start event.
         //Saves resources
-
+        Send(this.remoteEmitter, "PlaySound", 'belltollnightelf.ogg');
         console.log(`Started encounter ${HourglassInn.encounterID}`);
     }
 

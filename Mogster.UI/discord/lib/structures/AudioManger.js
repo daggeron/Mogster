@@ -134,9 +134,6 @@ class AudioManager {
         if (!this.voiceChannel) throw 'I already left the voice channel! You might want me to be in one in order to leave it...';
         await this.voiceChannel.leave();
         if (this.voiceChannel) this.forceDisconnect();
-
-        // Reset the status
-        return this.clear();
     }
 
     async play(path) {
@@ -155,8 +152,8 @@ class AudioManager {
 
         this.connection.play(stream, {
             bitrate: this.voiceChannel.bitrate / 1000,
-            passes: 5,
-            volume: 0.1
+            passes: 2,
+            volume: 0.5
         });
 
         return this.dispatcher;
