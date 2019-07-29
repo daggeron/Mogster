@@ -45,7 +45,9 @@
     "serialize-error": "^4.1.0",
     "vm2": "^3.8.2",
     "winston": "^3.2.1",
-    "zucc": "^0.1.2"
+    "zucc": "^0.1.2",
+    "electron-store": "3.3.0"
+
   },
   "_moduleAliases": {
     "@root": ".",

@@ -13,24 +13,36 @@ const process = require('process');
 const rootPath = require('electron-root-path').rootPath;
 const log = require('electron-log');
 const path = require('path');
+const Store = require('electron-store');
 
-const config = require('config');
+const store = new Store({
+    schema: {
+        "discord": {
+            "use": { "type": "boolean", "default":"false" },
+            "token": { "type": "string", "default": "changeme" },
+            "guild": { "type": "string", "default": "changeme" },
+            "channel": { "type": "string", "default": "changeme" }
+        }
+    }, 
+    cwd: path.resolve(rootPath, 'config')
+});
+
+
+console.log(store.has("discord.use"));
+
+console.log(store.get("discord.use"));
+
 const { fork } = require('child_process');
 //const Notifications = require('./overlay/notification/notification');
 const SoundWindow = require('./overlay/sound/sound');
 
-process.env["NODE_CONFIG_DIR"] = path.resolve(rootPath, "config");
-
-this.VoiceClient = {};
-var useDiscord = false;
-
-if (config.has("discord.use") && config.get("discord.use")) {
+if (store.get("discord.use")) {
     this.VoiceClient = require('./discord/fork').VoiceClient;
-    this.useDiscord = true;
-}
+} 
+
 //process.env.EDGE_APP_ROOT = path.resolve(rootPath, 'plugins');
 //process.env.EDGE_USE_CORECLR = 1;
-//This needs to be updated
+//This needs to be updated`
 var edge = require('electron-edge-js');
 var ipcBridge = edge.func({
     assemblyFile: path.resolve(rootPath, 'plugins/Mogster.Core.dll'),
@@ -52,38 +64,15 @@ class MogsterUI {
         this.initApp();
         this.initIPC();
         await this.startSandbox();
-        if (useDiscord)
+        if (store.get("discord.use"))
             this.startDiscord();
-    }
-
-    setupDiscordBot() {
-        try {
-            let token = config.get("discord.token");
-            log.debug('Forking');
-
-            this.voiceClient = new VoiceClient(app.getAppPath(), token, path.resolve(rootPath, "audio"));
-
-            this.voiceClient.start();
-
-            this.voiceClient.onAny(function (event, payload) {
-
-            });
-
-            ipcMain.on('Discord', (data) => {
-                this.voiceClient.emit(data.event, data.payload);
-            });
-
-            log.debug('Done forking');
-        } catch (exception) {
-            log.error(exception);
-        }
     }
 
     async startDiscord() {
         //let token = config.get("discord.token");
-        let token = 'ReplaceME';
-        let channelID = '999999999999999';
-        let guildID = '999999999999999';
+        let token = store.get("discord.token");
+        let channelID = store.get("discord.channel");
+        let guildID = store.get("discord.guild");
 
         this.voiceClient = fork(path.resolve(rootPath, 'discord/client.js'),
             [token, path.resolve(rootPath, 'audio'), channelID, guildID], {
