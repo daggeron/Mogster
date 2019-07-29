@@ -213,12 +213,16 @@ class MogsterUI {
                             } else {
                                 store.set("discord.use", false)
                                 this.shutdownDiscord();
-                            }
+                            } 
                         } 
                     }, {
                             label: 'Stop local Audio Playback', click: (item, window, event) => {
                                 ipcMain.emit("Discord", { 'event': 'RemoteStop', 'payload': '' });
                                 ipcMain.emit("StopSound");
+                            }
+                        }, {
+                            label: 'Play Test Sound', click: (item, window, event) => {
+                                ipcMain.emit("Discord", { 'event': 'RemotePlay', 'payload': 'belltollnightelf.ogg' });
                             }
                         }]
                 },
