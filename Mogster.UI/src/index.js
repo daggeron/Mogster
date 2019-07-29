@@ -27,11 +27,6 @@ const store = new Store({
     cwd: path.resolve(rootPath, 'config')
 });
 
-
-console.log(store.has("discord.use"));
-
-console.log(store.get("discord.use"));
-
 const { fork } = require('child_process');
 //const Notifications = require('./overlay/notification/notification');
 const SoundWindow = require('./overlay/sound/sound');

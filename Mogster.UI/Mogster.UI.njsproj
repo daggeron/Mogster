@@ -203,6 +203,7 @@
     <Folder Include="src\discord\lib\extensions\" />
     <Folder Include="src\discord\lib\structures\" />
     <Folder Include="src\ffxiv\" />
+    <Folder Include="src\ffxiv\libs\" />
     <Folder Include="src\ffxiv\libs\bob\" />
     <Folder Include="src\ffxiv\libs\mobx\" />
     <Folder Include="src\ffxiv\libs\mobx\lib\" />

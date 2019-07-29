@@ -1,0 +1,8 @@
+{
+	"discord": {
+		"use": false,
+		"token": "dontforgettochangeme",
+		"guild": "112341234234",
+		"channel": "123459"
+	}
+}

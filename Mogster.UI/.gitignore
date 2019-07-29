@@ -2,7 +2,7 @@ dist/
 distjs/
 plugins/
 build/
-config/
+config/config.json
 # Logs
 logs
 *.log
