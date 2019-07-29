@@ -1,0 +1,2690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WindowsFirewallHelper</name>
+    </assembly>
+    <members>
+        <member name="T:WindowsFirewallHelper.ActiveCollection`1">
+            <inheritdoc />
+            <summary>
+                Represents a dynamic data collection that provides notifications when items get added or removed.
+            </summary>
+            <typeparam name="T">The type of elements in the collection.</typeparam>
+        </member>
+        <member name="E:WindowsFirewallHelper.ActiveCollection`1.ItemsModified">
+            <summary>
+                An event to be raised when an Item got removed or added to the collection
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.ActiveCollection`1.Sync(`0[])">
+            <summary>
+                Syncs this ActiveCollection object with the provided <see cref="T:System.Array" />
+            </summary>
+            <param name="newItems"></param>
+        </member>
+        <member name="M:WindowsFirewallHelper.ActiveCollection`1.ClearItems">
+            <inheritdoc />
+            <summary>
+                Removes all elements from the <see cref="T:WindowsFirewallHelper.Helpers.ActiveCollection" />.
+            </summary>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.ActiveCollection`1.InsertItem(System.Int32,`0)">
+            <inheritdoc />
+            <summary>
+                Inserts an element into the <see cref="T:WindowsFirewallHelper.Helpers.ActiveCollection" /> at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="item" /> should be inserted.</param>
+            <param name="item">The object to insert. The value can be null for reference types.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero.-or-
+                <paramref name="index" /> is greater than <see cref="P:WindowsFirewallHelper.Helpers.ActiveCollection.Count" />.
+            </exception>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.ActiveCollection`1.RemoveItem(System.Int32)">
+            <inheritdoc />
+            <summary>
+                Removes the element at the specified index of the <see cref="T:WindowsFirewallHelper.Helpers.ActiveCollection" />.
+            </summary>
+            <param name="index">The zero-based index of the element to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero.-or-
+                <paramref name="index" /> is equal to or greater than
+                <see cref="P:WindowsFirewallHelper.Helpers.ActiveCollection.Count" />.
+            </exception>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.ActiveCollection`1.SetItem(System.Int32,`0)">
+            <inheritdoc />
+            <summary>
+                Replaces the element at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the element to replace.</param>
+            <param name="item">The new value for the element at the specified index. The value can be null for reference types.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero.-or-
+                <paramref name="index" /> is greater than <see cref="P:WindowsFirewallHelper.Helpers.ActiveCollection.Count" />.
+            </exception>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+        </member>
+        <member name="T:WindowsFirewallHelper.ActiveCollectionChangedEventArgs`1">
+            <inheritdoc />
+            <summary>
+                ActiveCollectionChangedEventArgs is a class containing event data about the
+                <see cref="T:WindowsFirewallHelper.ActiveCollectionChangeType" /> event.
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.ActiveCollectionChangedEventArgs`1.#ctor(WindowsFirewallHelper.ActiveCollectionChangeType,`0)">
+            <inheritdoc />
+            <summary>
+                Initializes a new instance of the <see cref="T:WindowsFirewallHelper.Helpers.ActiveCollectionChangedEventArgs" />
+                class.
+            </summary>
+            <param name="action">The type of change that happened.</param>
+            <param name="item">The item of the collection that changed.</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.ActiveCollectionChangedEventArgs`1.ActionType">
+            <summary>
+                The type of change that happened.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.ActiveCollectionChangedEventArgs`1.Item">
+            <summary>
+                The item of the collection that changed.
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.ActiveCollectionChangeType">
+            <summary>
+                Possible types of change in a <see cref="T:WindowsFirewallHelper.Helpers.ActiveCollection`1" />
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.ActiveCollectionChangeType.Added">
+            <summary>
+                New item added to the collection
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.ActiveCollectionChangeType.Removed">
+            <summary>
+                New item removed from the collection
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.DefaultGateway">
+            <inheritdoc />
+            <summary>
+                A class representing default gateway as an address
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.DefaultGateway.AddressString">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.DefaultGateway.TryParse(System.String,WindowsFirewallHelper.Addresses.DefaultGateway@)">
+            <summary>
+                Determines whether a string is a valid default gateway address
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid default gateway address; otherwise,
+                <see langword="false" />.
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="address">The <see cref="T:WindowsFirewallHelper.Addresses.DefaultGateway" /> instance that represents the passed string.</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.DHCPService">
+            <inheritdoc />
+            <summary>
+                A class representing a DHCP service as an address
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.DHCPService.AddressString">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.DHCPService.TryParse(System.String,WindowsFirewallHelper.Addresses.DHCPService@)">
+            <summary>
+                Determines whether a string is a valid DHCP service
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid DHCP service; otherwise, <see langword="false" />.
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="service">The <see cref="T:WindowsFirewallHelper.Addresses.DHCPService" /> instance that represents the passed string.</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.DNSService">
+            <inheritdoc />
+            <summary>
+                A class representing a DNS service as an address
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.DNSService.AddressString">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.DNSService.TryParse(System.String,WindowsFirewallHelper.Addresses.DNSService@)">
+            <summary>
+                Determines whether a string is a valid DNS service
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid DNS service; otherwise, <see langword="false" />.
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="service">The <see cref="T:WindowsFirewallHelper.Addresses.DNSService" /> instance that represents the passed string.</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.IPRange">
+            <inheritdoc cref="T:WindowsFirewallHelper.IAddress" />
+            <summary>
+                A class representing a range of Internet Protocol addresses
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.IPRange.#ctor(System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+                Creates an instance of the IPRange class using the provided values as the start and end of the IP range
+            </summary>
+            <param name="address1">One end of the range</param>
+            <param name="address2">Other end of the range</param>
+            <exception cref="T:System.ArgumentException">Addresses should be of a same family</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.IPRange.EndAddress">
+            <summary>
+                Gets and sets the upper bound of the range
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.IPRange.StartAddress">
+            <summary>
+                Gets and sets the lower bound of the range
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.IPRange.ToString">
+            <summary>
+                Returns a string that represents the current <see cref="T:WindowsFirewallHelper.Addresses.IPRange" />.
+            </summary>
+            <returns>
+                A string that represents the current <see cref="T:WindowsFirewallHelper.Addresses.IPRange" />.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.IPRange.Equals(WindowsFirewallHelper.Addresses.IPRange)">
+            <summary>
+                Compares two IP address ranges.
+            </summary>
+            <returns>
+                <see langword="true" /> if the two address ranges are equal; otherwise, <see langword="false" />.
+            </returns>
+            <param name="other">An <see cref="T:WindowsFirewallHelper.Addresses.IPRange" /> instance to compare to the current instance. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.IPRange.TryParse(System.String,WindowsFirewallHelper.Addresses.IPRange@)">
+            <summary>
+                Determines whether a string is a valid IP address range.
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid IP address range; otherwise, <see langword="false" />
+                .
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="addressRange">The <see cref="T:WindowsFirewallHelper.Addresses.IPRange" /> version of the string.</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.IPRange.Equals(System.Object)">
+            <summary>
+                Compares two IP address ranges.
+            </summary>
+            <returns>
+                <see langword="true" /> if the two address ranges are equal; otherwise, <see langword="false" />.
+            </returns>
+            <param name="obj">An <see cref="T:Object" /> instance to compare to the current instance. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.IPRange.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current <see cref="T:WindowsFirewallHelper.Addresses.IPRange" />.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.LocalSubnet">
+            <summary>
+                A class representing local subnet as an address
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.LocalSubnet.AddressString">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.LocalSubnet.TryParse(System.String,WindowsFirewallHelper.Addresses.LocalSubnet@)">
+            <summary>
+                Determines whether a string is a valid local subnet address
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid local subnet address; otherwise,
+                <see langword="false" />.
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="service">The <see cref="T:WindowsFirewallHelper.Addresses.LocalSubnet" /> instance that represents the passed string.</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.NetworkAddress">
+            <inheritdoc cref="T:WindowsFirewallHelper.IAddress" />
+            <summary>
+                A Class representing a range of Internet Protocol addresses using an <see cref="T:System.Net.IPAddress" /> and a
+                Subnet Mask
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.NetworkAddress.IPv4SingleHostSubnet">
+            <summary>
+                Returns the single host subnet for IPv4 IPs (255.255.255.255)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.NetworkAddress.IPv6SingleHostSubnet">
+            <summary>
+                Returns the single host subnet for IPv6 IPs (ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff)
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.#ctor(System.Net.IPAddress)">
+            <summary>
+                Creates an instance of the <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> class using an <see cref="T:System.Net.IPAddress" /> and
+                255.255.255.255 or ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff as the Subnet Mask
+            </summary>
+            <param name="address">IPAddress to create an instance of <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> with</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.#ctor(System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+                Creates an instance of the <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> class using an <see cref="T:System.Net.IPAddress" /> and a Subnet Mask
+            </summary>
+            <param name="address">
+                <see cref="T:System.Net.IPAddress" /> to be used as the base IPAddress of the <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" />
+            </param>
+            <param name="subnetMask">
+                <see cref="T:System.Net.IPAddress" /> to be used as the Subnet Mask of the <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" />
+            </param>
+            <exception cref="T:System.ArgumentException">Addresses should be of a same family</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.NetworkAddress.Address">
+            <summary>
+                Gets or sets the base <see cref="T:System.Net.IPAddress" /> in which this <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> is based on
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.NetworkAddress.EndAddress">
+            <summary>
+                Gets the calculated upper bound of the range
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.NetworkAddress.StartAddress">
+            <summary>
+                Gets the calculated lower bound of the range
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.NetworkAddress.SubnetMask">
+            <summary>
+                Gets or sets the Subnet Mask in which this <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> is based on
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.ToString">
+            <summary>
+                Returns a string that represents the current <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" />.
+            </summary>
+            <returns>
+                A string that represents the current <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" />.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.Equals(WindowsFirewallHelper.Addresses.NetworkAddress)">
+            <summary>
+                Compares two network address.
+            </summary>
+            <returns>
+                <see langword="true" /> if the two network address are equal; otherwise, <see langword="false" />.
+            </returns>
+            <param name="other">An <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> instance to compare to the current instance. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.TryParse(System.String,WindowsFirewallHelper.Addresses.NetworkAddress@)">
+            <summary>
+                Determines whether a string is a valid network address.
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid network address; otherwise, <see langword="false" />
+                .
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="addressNetwork">The <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" /> version of the string.</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.Equals(System.Object)">
+            <summary>
+                Compares two network addresses.
+            </summary>
+            <returns>
+                <see langword="true" /> if the two network address are equal; otherwise, <see langword="false" />.
+            </returns>
+            <param name="obj">An <see cref="T:Object" /> instance to compare to the current instance. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.NetworkAddress.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current <see cref="T:WindowsFirewallHelper.Addresses.NetworkAddress" />.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.SingleIP">
+            <inheritdoc cref="T:WindowsFirewallHelper.IAddress" />
+            <summary>
+                A class representing an Internet Protocol address
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.Any">
+            <summary>
+                Provides an IP address that matches any IPAddress. This field is read-only.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.Loopback">
+            <summary>
+                Provides the IP loopback address. This field is read-only.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.Broadcast">
+            <summary>
+                Provides the IP broadcast address. This field is read-only.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.IPv6Loopback">
+            <summary>
+                Provides the IP loopback address. This property is read-only.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.IPv6None">
+            <summary>
+                Obsolete - Provides an IP address that indicates that no IPv6 IPAddress is mentioned. This property is read-only.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.None">
+            <summary>
+                Obsolete - Provides an IP address that indicates that no IPAddress is mentioned. This property is read-only.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.Addresses.SingleIP.IPv6Any">
+            <summary>
+                Obsolete - Provides an IP address that matches any IPv6 IPAddress. This field is read-only.
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.#ctor(System.Int64)">
+            <summary>
+                Creates a new instance of the SingleIP class with IP Address passed as an integer value.
+            </summary>
+            <param name="newAddress">Integer value of the IP Address</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.#ctor(System.Byte[])">
+            <summary>
+                Creates a new instance of the SingleIP class with IP Address passed as a <see langword="byte" /> array.
+            </summary>
+            <param name="address"><see langword="byte" /> array containing the IP Address</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.ToString">
+            <summary>
+                Converts an Internet address to its standard notation.
+            </summary>
+            <returns>
+                A string that contains the IP address in either IPv4 dotted-quad or in IPv6 colon-hexadecimal notation.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.Equals(System.Net.IPAddress)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.Equals(WindowsFirewallHelper.Addresses.SingleIP)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.FromIPAddress(System.Net.IPAddress)">
+            <summary>
+                Creates a new instance of the <see cref="T:WindowsFirewallHelper.Addresses.SingleIP" /> class using the provided <see cref="T:System.Net.IPAddress" />.
+            </summary>
+            <param name="ip">The <see cref="T:System.Net.IPAddress" /> to create new object from.</param>
+            <returns>Newly created <see cref="T:WindowsFirewallHelper.Addresses.SingleIP" /> instance</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.IsLoopback(System.Net.IPAddress)">
+            <summary>
+                NOT SUPPORTED
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.IsLoopback(WindowsFirewallHelper.Addresses.SingleIP)">
+            <summary>
+                Indicates whether the specified IP address is the loopback address.
+            </summary>
+            <returns>
+                true if <paramref name="address" /> is the loopback address; otherwise, false.
+            </returns>
+            <param name="address">An IP address. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.Parse(System.String)">
+            <summary>
+                Converts an IP address string to an <see cref="T:WindowsFirewallHelper.Addresses.SingleIP" /> instance.
+            </summary>
+            <returns>
+                An <see cref="T:WindowsFirewallHelper.Addresses.SingleIP" /> instance.
+            </returns>
+            <param name="ipString">
+                A string that contains an IP address in dotted-quad notation for IPv4 and in colon-hexadecimal
+                notation for IPv6.
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="ipString" /> is null. </exception>
+            <exception cref="T:System.FormatException"><paramref name="ipString" /> is not a valid IP address. </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.TryParse(System.String,System.Net.IPAddress@)">
+            <summary>
+                NOT SUPPORTED
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.TryParse(System.String,WindowsFirewallHelper.Addresses.SingleIP@)">
+            <summary>
+                Determines whether a string is a valid IP address.
+            </summary>
+            <returns>
+                true if <paramref name="ipString" /> is a valid IP address; otherwise, false.
+            </returns>
+            <param name="ipString">The string to validate.</param>
+            <param name="address">The <see cref="T:WindowsFirewallHelper.Addresses.SingleIP" /> version of the string.</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SingleIP.ToIPAddress">
+            <summary>
+                Cast the current <see cref="T:WindowsFirewallHelper.Addresses.SingleIP" /> object to <see cref="T:System.Net.IPAddress" /> and returns it.
+            </summary>
+            <returns>Returns the corresponding <see cref="T:System.Net.IPAddress" /> object</returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.SpecialAddress">
+            <inheritdoc cref="T:WindowsFirewallHelper.IAddress" />
+            <summary>
+                This class is the parent class of all special address values
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.SpecialAddress.AddressString">
+            <summary>
+                Should returns the constant value of the special address
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SpecialAddress.ToString">
+            <inheritdoc cref="T:WindowsFirewallHelper.IAddress" />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SpecialAddress.Equals(WindowsFirewallHelper.Addresses.SpecialAddress)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SpecialAddress.Equals(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SpecialAddress.TryParse``1(System.String,``0@)">
+            <summary>
+                Determines whether a string is a valid address
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid address; otherwise, <see langword="false" />.
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="service">The instance that represents the passed string.</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SpecialAddress.Equals(System.Object)">
+            <summary>
+                Compares address instances.
+            </summary>
+            <returns>
+                <see langword="true" /> if the two instances are equal; otherwise, <see langword="false" />.
+            </returns>
+            <param name="obj">An <see cref="T:Object" /> instance to compare to the current instance. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.SpecialAddress.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current instance.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.Addresses.WINSService">
+            <inheritdoc />
+            <summary>
+                A class representing a WINS service as an address
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.Addresses.WINSService.AddressString">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.Addresses.WINSService.TryParse(System.String,WindowsFirewallHelper.Addresses.WINSService@)">
+            <summary>
+                Determines whether a string is a valid WINS service
+            </summary>
+            <returns>
+                <see langword="true" /> if <paramref name="str" /> is a valid WINS service; otherwise, <see langword="false" />.
+            </returns>
+            <param name="str">The string to validate.</param>
+            <param name="service">The <see cref="T:WindowsFirewallHelper.Addresses.WINSService" /> instance that represents the passed string.</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.APIVersion">
+            <summary>
+                Versions of API
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.APIVersion.None">
+            <summary>
+                Invalid or unknown version of API
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.APIVersion.ThirdParty">
+            <summary>
+                Third Party API
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.APIVersion.FirewallAPIv1">
+            <summary>
+                Windows Firewall API v1 (Win XP+)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.APIVersion.FirewallAPIv2">
+            <summary>
+                Windows Firewall API v2 (Windows Vista+)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.APIVersion.FirewallAPIv2Win7">
+            <summary>
+                Windows Firewall API v2 (Windows 7+)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.APIVersion.FirewallAPIv2Win8">
+            <summary>
+                Windows Firewall API v2 (Windows 8+)
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAction">
+            <summary>
+                Firewall rule actions
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAction.Block">
+            <summary>
+                Block rule
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAction.Allow">
+            <summary>
+                Allow rule
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv1.Firewall">
+            <summary>
+                Contains properties and methods of Windows Firewall v1
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Firewall.Instance">
+            <summary>
+                Gets the current singleton instance of this class
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.String,WindowsFirewallHelper.FirewallProtocol)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profile">The profile that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <param name="protocol">Protocol that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked setting is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.String)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profile">The profile that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked setting is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,System.String)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profile">The profile that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked setting is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.UInt16,WindowsFirewallHelper.FirewallProtocol)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profile">The profile that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <param name="protocol">Protocol that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked setting is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.UInt16)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profile">The profile that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked setting is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,System.UInt16)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profile">The profile that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked setting is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.GetProfile(WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Returns a specific firewall profile
+            </summary>
+            <param name="profile">Requested firewall profile</param>
+            <returns>Firewall profile object implementing <see cref="T:WindowsFirewallHelper.IProfile" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked profile is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Firewall.GetProfile">
+            <inheritdoc />
+            <summary>
+                Returns the active firewall profile, if any
+            </summary>
+            <returns>
+                The active firewall profile object implementing <see cref="T:WindowsFirewallHelper.IProfile" /> interface or null
+                if no firewall
+                profile is currently active
+            </returns>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                The asked profile is not
+                supported with this class
+            </exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Firewall.IsSupported">
+            <inheritdoc />
+            <summary>
+                Gets a Boolean value showing if the firewall is supported in this environment.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Firewall.Name">
+            <inheritdoc />
+            <summary>
+                Gets the name of the firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Firewall.Profiles">
+            <inheritdoc />
+            <summary>
+                Gets the list of all available profiles of the firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Firewall.Rules">
+            <inheritdoc />
+            <summary>
+                Gets the list of all registered rules of the firewall
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+            <inheritdoc />
+            <summary>
+                The exception that is thrown when an invoked method is not supported with the Windows Firewall API v1
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException.#ctor">
+            <inheritdoc />
+            <summary>
+                Creates a new instance of the FirewallAPIv1NotSupportedException class
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException.#ctor(System.String)">
+            <inheritdoc />
+            <summary>
+                Creates a new instance of the FirewallAPIv1NotSupportedException class with a string as the message
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> to be used as the message of the exception</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile">
+            <inheritdoc />
+            <summary>
+                Contains properties of a Windows Firewall v1 profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.BlockAllInboundTraffic">
+            <inheritdoc />
+            <summary>
+                Gets or sets a Boolean value that blocks all inbound traffic completely regardless of any rules in this profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.DefaultInboundAction">
+            <inheritdoc />
+            <summary>
+                Gets the global default behavior regarding inbound traffic
+            </summary>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                Setting a value for this
+                property is not supported
+            </exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.DefaultOutboundAction">
+            <inheritdoc />
+            <summary>
+                Gets the global default behavior regarding outbound traffic
+            </summary>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">
+                Setting a value for this
+                property is not supported
+            </exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.Enable">
+            <inheritdoc />
+            <summary>
+                Gets a Boolean value showing if this firewall profile is enable and available
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.IsActive">
+            <inheritdoc />
+            <summary>
+                Gets a Boolean value showing if this firewall profile is the currently active profile.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.ShowNotifications">
+            <inheritdoc />
+            <summary>
+                Gets or sets a value indicating if the user should get notifications about rules of this profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.Type">
+            <inheritdoc />
+            <summary>
+                Gets a FirewallProfiles showing the type of this firewall profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.UnicastResponsesToMulticastBroadcast">
+            <inheritdoc />
+            <summary>
+                Gets or sets a value indicating if the firewall should send unicast responses to the multicast broadcasts
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.FirewallProfile.ToString">
+            <summary>
+                Returns a string that represents the current object.
+            </summary>
+            <returns>
+                A string that represents the current object.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule">
+            <inheritdoc cref="T:WindowsFirewallHelper.IRule" />
+            <summary>
+                Contains properties of a Windows Firewall v1 application rule
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.#ctor(System.String,System.String,WindowsFirewallHelper.FirewallProfiles)">
+            <summary>
+                Creates a new application rule for Windows Firewall v1
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="processAddress">Address of the executable file</param>
+            <param name="profile">The profile that this rule belongs to</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.ExecutableAddress">
+            <summary>
+                Gets or sets the address of the executable file that this rule is about
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.IsSupported">
+            <summary>
+                Returns a Boolean value indicating if these class is available in the current machine
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.UnderlyingObject">
+            <summary>
+                Returns the underlying Windows Firewall Object
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Equals(WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule)">
+            <summary>
+                Determines whether the specified<see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" />.
+            </summary>
+            <param name="other"> The object to compare with the current object.</param>
+            <returns>
+                true if the specified <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> is equal to the current<see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" />;
+                otherwise, false.
+            </returns>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Action">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Direction">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.IsEnable">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.LocalAddresses">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.LocalPorts">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.LocalPortType">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Profiles">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">Public profile or multiple profile registration is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Protocol">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.RemoteAddresses">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.RemotePorts">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Scope">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.op_Equality(WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule,WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> objects for equality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> object</param>
+            <returns>true if two sides are equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.op_Inequality(WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule,WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> objects for inequality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> object</param>
+            <returns>true if two sides are not equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" />.
+            </summary>
+            <returns>
+                true if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" />;
+                otherwise, false.
+            </returns>
+            <param name="other">The <see cref="T:System.Object" /> to compare with the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" />. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" />.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule.ToString">
+            <summary>
+                Returns a string that represents the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> object.
+            </summary>
+            <returns>
+                A string that represents the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.ApplicationRule" /> object.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule">
+            <inheritdoc cref="T:WindowsFirewallHelper.IRule" />
+            <summary>
+                Contains properties of a Windows Firewall v1 port rule
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.#ctor(System.String,System.UInt16,WindowsFirewallHelper.FirewallProfiles)">
+            <summary>
+                Creates a new port rule for Windows Firewall v1
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="port">Port number of the rule</param>
+            <param name="profile">The profile that this rule belongs to</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.IsSupported">
+            <summary>
+                Returns a Boolean value indicating if these class is available in the current machine
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.UnderlyingObject">
+            <summary>
+                Returns the underlying Windows Firewall Object
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Equals(WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule)">
+            <summary>
+                Determines whether the specified<see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" />.
+            </summary>
+            <param name="other"> The object to compare with the current object.</param>
+            <returns>
+                true if the specified <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> is equal to the current<see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" />;
+                otherwise, false.
+            </returns>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Action">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Direction">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.IsEnable">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.LocalAddresses">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.LocalPorts">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">
+                The array passes to this property as value should have one and
+                only one element
+            </exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.LocalPortType">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Profiles">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">Public profile or multiple profile registration is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Protocol">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">Only acceptable values are UDP, TCP and Any</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.RemoteAddresses">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.RemotePorts">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv1.FirewallAPIv1NotSupportedException">Setting a value for this property is not supported</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Scope">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.op_Equality(WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule,WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> objects for equality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> object</param>
+            <returns>true if two sides are equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.op_Inequality(WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule,WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> objects for inequality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" /> object</param>
+            <returns>true if two sides are not equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" />.
+            </summary>
+            <returns>
+                true if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" />; otherwise,
+                false.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" />. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current <see cref="T:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule" />.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv1.Rules.PortRule.ToString">
+            <summary>
+                Returns a string that represents the current object.
+            </summary>
+            <returns>
+                A string that represents the current object.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.EdgeTraversalAction">
+            <summary>
+                Edge Traversal behavior
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.EdgeTraversalAction.Deny">
+            <summary>
+                Fully block application, service, or port to globally addressable and accessible from outside a NAT edge device.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.EdgeTraversalAction.Allow">
+            <summary>
+                Fully allow application, service, or port to globally addressable and accessible from outside a NAT edge device.
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.EdgeTraversalAction.DefferToApp">
+            <summary>
+                Application makes the decision to allow unsolicited traffic from the Internet through a network address translation
+                (NAT) edge device
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.EdgeTraversalAction.DefferToUser">
+            <summary>
+                User makes the decision to allow unsolicited traffic from the Internet through a network address translation (NAT)
+                edge device
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.Firewall">
+            <inheritdoc />
+            <summary>
+                Contains properties and methods of Windows Firewall with Advanced Security
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Firewall.Instance">
+            <summary>
+                Gets the current singleton instance of this class
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.String,WindowsFirewallHelper.FirewallProtocol)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <param name="protocol">Protocol that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.String)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,System.String)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.UInt16,WindowsFirewallHelper.FirewallProtocol)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <param name="protocol">Protocol that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.UInt16)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,System.UInt16)">
+            <inheritdoc />
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.GetProfile(WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Returns a specific firewall profile
+            </summary>
+            <param name="profile">Requested firewall profile</param>
+            <returns>Firewall profile object implementing <see cref="T:WindowsFirewallHelper.IProfile" /> interface</returns>
+            <exception cref="T:System.NotSupportedException">This class is not supported on this machine</exception>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv2.FirewallAPIv2NotSupportedException">The asked profile is not supported with this class</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Firewall.GetProfile">
+            <inheritdoc />
+            <summary>
+                Returns the active firewall profile, if any
+            </summary>
+            <returns>
+                The active firewall profile object implementing <see cref="T:WindowsFirewallHelper.IProfile" /> interface or null if no firewall
+                profile is currently active
+            </returns>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Firewall.IsSupported">
+            <inheritdoc />
+            <summary>
+                Gets a Boolean value showing if the firewall is supported in this environment.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Firewall.Name">
+            <inheritdoc />
+            <summary>
+                Gets the name of the firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Firewall.Profiles">
+            <inheritdoc />
+            <summary>
+                Gets the list of all available profiles of the firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Firewall.Rules">
+            <inheritdoc />
+            <summary>
+                Gets the list of all registered rules of the firewall
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.FirewallAPIv2InvalidProtocolException">
+            <summary>
+                The exception that is thrown when an operation is not supported with the selected Protocol in the Windows Firewall
+                API v2
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.FirewallAPIv2InvalidProtocolException.#ctor(System.String)">
+            <inheritdoc />
+            <summary>
+                Creates a new instance of the FirewallAPIv2InvalidProtocolException exception
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.FirewallAPIv2NotSupportedException">
+            <summary>
+                The exception that is thrown when an invoked method is not supported with the Windows Firewall API v2
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.FirewallInterfaceTypes">
+            <summary>
+                Type of the network interface
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.FirewallInterfaceTypes.RemoteAccess">
+            <summary>
+                Remove access
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.FirewallInterfaceTypes.Wireless">
+            <summary>
+                Wireless (Wi-Fi)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.FirewallInterfaceTypes.Lan">
+            <summary>
+                Local Area Network (Ethernet)
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile">
+            <inheritdoc />
+            <summary>
+                Contains properties of a Windows Firewall with Advanced Security profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.BlockAllInboundTraffic">
+            <inheritdoc />
+            <summary>
+                Gets or sets a Boolean value that blocks all inbound traffic completely regardless of any rules in this profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.DefaultInboundAction">
+            <inheritdoc />
+            <summary>
+                Gets or sets the global default behavior regarding inbound traffic
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.DefaultOutboundAction">
+            <inheritdoc />
+            <summary>
+                Gets or sets the global default behavior regarding outbound traffic
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.Enable">
+            <inheritdoc />
+            <summary>
+                Gets a Boolean value showing if this firewall profile is enable and available
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.IsActive">
+            <inheritdoc />
+            <summary>
+                Gets a Boolean value showing if this firewall profile is the currently active profile.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.ShowNotifications">
+            <inheritdoc />
+            <summary>
+                Gets or sets a value indicating if the user should get notifications about rules of this profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.Type">
+            <inheritdoc />
+            <summary>
+                Gets a FirewallProfiles showing the type of this firewall profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.UnicastResponsesToMulticastBroadcast">
+            <inheritdoc />
+            <summary>
+                Gets or sets a value indicating if the firewall should send unicast responses to the multicast broadcasts
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.FirewallProfile.ToString">
+            <summary>
+                Returns a string that represents the current object.
+            </summary>
+            <returns>
+                A string that represents the current object.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage">
+            <summary>
+                A class representing a Internet Control Message (ICM) type
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.Any">
+            <summary>
+                All ICM types and codes
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.#ctor(System.Byte)">
+            <summary>
+                Creates a new instance of the InternetControlMessage class with the specified ICM type number
+            </summary>
+            <param name="type">ICM type number to create the instance from</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.#ctor(System.Byte,System.Byte)">
+            <summary>
+                Creates a new instance of the InternetControlMessage class with the specified ICM type number and type code
+            </summary>
+            <param name="type">ICM type number to create the instance from</param>
+            <param name="code">ICM type code to create the instance from</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.#ctor(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6)">
+            <summary>
+                Creates a new instance of the InternetControlMessage class with the specified known ICM type
+            </summary>
+            <param name="type">ICM type to create the instance from</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.#ctor(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6,System.Byte)">
+            <summary>
+                Creates a new instance of the InternetControlMessage class with the specified known ICM type and type code
+            </summary>
+            <param name="type">ICM type to create the instance from</param>
+            <param name="code">ICM type code to create the instance from</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.#ctor(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes)">
+            <summary>
+                Creates a new instance of the InternetControlMessage class with the specified known ICM type
+            </summary>
+            <param name="type">ICM type to create the instance from</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.#ctor(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes,System.Byte)">
+            <summary>
+                Creates a new instance of the InternetControlMessage class with the specified known ICM type and type code
+            </summary>
+            <param name="type">ICM type to create the instance from</param>
+            <param name="code">ICM type code to create the instance from</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.Code">
+            <summary>
+                Gets the corresponding ICM type code
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.Type">
+            <summary>
+                Gets the corresponding ICM type number
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.Equals(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage)">
+            <summary>
+                Determines whether the specified<see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" />.
+            </summary>
+            <param name="other"> The object to compare with the current object.</param>
+            <returns>
+                true if the specified <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" />;
+                otherwise, false.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.op_Equality(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage,WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> objects for equality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> object</param>
+            <returns>true if two sides are equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.op_Inequality(WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage,WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> objects for inequality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> object</param>
+            <returns>true if two sides are not equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.TryParse(System.String,WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage@)">
+            <summary>
+                Tries to create a <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> object from the the string
+            </summary>
+            <param name="str">The string to be analyzed</param>
+            <param name="icm">Returning <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> object</param>
+            <returns>
+                <see langword="true" /> if process ends well and <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" /> created; otherwise
+                <see langword="false" />
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" />.
+            </summary>
+            <returns>
+                true if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" />;
+                otherwise, false.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" />. </param>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current <see cref="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage" />.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessage.ToString">
+            <summary>
+                Returns a string that represents the current object.
+            </summary>
+            <returns>
+                A string that represents the current object.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes">
+            <summary>
+                List of known ICM types for Internet Control Message Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.EchoReply">
+            <summary>
+                Echo Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.DestinationUnreachable">
+            <summary>
+                Destination Unreachable Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.SourceQuench">
+            <summary>
+                Source Quench Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.Redirect">
+            <summary>
+                Redirect Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.AlternateHostAddress">
+            <summary>
+                Alternate Host Address Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.Echo">
+            <summary>
+                Echo Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.RouterAdvertisement">
+            <summary>
+                Router Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.RouterSelection">
+            <summary>
+                Router Selection Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.TimeExceeded">
+            <summary>
+                Time Exceeded Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.ParameterProblem">
+            <summary>
+                Parameter Problem Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.Timestamp">
+            <summary>
+                Timestamp Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.TimestampReply">
+            <summary>
+                Timestamp Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.InformationRequest">
+            <summary>
+                Information Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.InformationReply">
+            <summary>
+                Information Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.AddressMaskRequest">
+            <summary>
+                Address Mask Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.AddressMaskReply">
+            <summary>
+                Address Mask Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.TraceRoute">
+            <summary>
+                Trace-route Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.DatagramConversionError">
+            <summary>
+                Datagram Conversion Error Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.MobileHostRedirect">
+            <summary>
+                Mobile Host Redirect Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.IPv6WhereAreYou">
+            <summary>
+                IPv6 'Where Are You' Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.IPv6IAmHere">
+            <summary>
+                IPv6 'I Am Here' Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.MobileRegistrationRequest">
+            <summary>
+                Mobile Registration Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.MobileRegistrationReply">
+            <summary>
+                Mobile Registration Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.DomainNameRequest">
+            <summary>
+                Domain Name Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.DomainNameReply">
+            <summary>
+                Domain Name Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.Skip">
+            <summary>
+                Skip Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypes.Photuris">
+            <summary>
+                Photuris Message
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6">
+            <summary>
+                List of known ICM types of Internet Control Message Protocol version 6 (ICMPv6)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.DestinationUnreachable">
+            <summary>
+                Destination Unreachable Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.PacketTooBig">
+            <summary>
+                Packet Too Big Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.TimeExceeded">
+            <summary>
+                Time Exceeded Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.ParameterProblem">
+            <summary>
+                Parameter Problem Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.EchoRequest">
+            <summary>
+                Echo Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.EchoReply">
+            <summary>
+                Echo Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastListenerQuery">
+            <summary>
+                Multicast Listener Query Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastListenerReport">
+            <summary>
+                Multicast Listener Report Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastListenerDone">
+            <summary>
+                Multicast Listener Done Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.RouterSolicitation">
+            <summary>
+                Router Solicitation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.RouterAdvertisement">
+            <summary>
+                Router Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.NeighborSolicitation">
+            <summary>
+                Neighbor Solicitation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.NeighborAdvertisement">
+            <summary>
+                Neighbor Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.Redirect">
+            <summary>
+                Redirect Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.RouterRenumbering">
+            <summary>
+                Router Renumbering Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.ICMPNodeInformationQuery">
+            <summary>
+                ICMP Node Information Query Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.ICMPNodeInformationResponse">
+            <summary>
+                ICMP Node Information Response Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.InverseNeighborDiscoverySolicitation">
+            <summary>
+                Inverse Neighbor Discovery Solicitation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.InverseNeighborDiscoveryAdvertisement">
+            <summary>
+                Inverse Neighbor Discovery Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastListenerReportVersion2">
+            <summary>
+                Multicast Listener Report Version 2 Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.HomeAgentAddressDiscoveryRequest">
+            <summary>
+                Home Agent Address Discovery Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.HomeAgentAddressDiscoveryReply">
+            <summary>
+                Home Agent Address Discovery Reply Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MobilePrefixSolicitation">
+            <summary>
+                Mobile Prefix Solicitation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MobilePrefixAdvertisement">
+            <summary>
+                Mobile Prefix Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.CertificationPathSolicitation">
+            <summary>
+                Certification Path Solicitation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.CertificationPathAdvertisement">
+            <summary>
+                Certification Path Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastRouterAdvertisement">
+            <summary>
+                Multicast Router Advertisement Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastRouterSolicitation">
+            <summary>
+                Multicast Router Solicitation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MulticastRouterTermination">
+            <summary>
+                Multicast Router Termination Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.FMIPv6Messages">
+            <summary>
+                Fast Handover for Mobile Internet Protocol (FMIPv6) Messages
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.RPLControl">
+            <summary>
+                'Routing Protocol for Low-Power and Lossy Networks' Control Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.ILNPv6LocatorUpdate">
+            <summary>
+                Locator Network Protocol (ILNPv6) Locator Update Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.DuplicateAddressRequest">
+            <summary>
+                Duplicate Address Request Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.DuplicateAddressConfirmation">
+            <summary>
+                Duplicate Address Confirmation Message
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.InternetControlMessageKnownTypesV6.MPLControl">
+            <summary>
+                'Multicast Protocol for Low-Power and Lossy' Control Message
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.IPSecSecurityLevel">
+            <summary>
+                Internet Protocol Security level
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.IPSecSecurityLevel.None">
+            <summary>
+                No Internet Protocol Security
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.IPSecSecurityLevel.IPSecNoEncapsulation">
+            <summary>
+                Internet Protocol Security with no encapsulation security payload (ESP)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.IPSecSecurityLevel.IPSecWithIntegrityProtection">
+            <summary>
+                Internet Protocol Security with integrity protection check value (ICV)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.IPSecSecurityLevel.IPSecWithEncryptionNegotiation">
+            <summary>
+                Internet Protocol Security with negotiation and mutual decision about the encryption level
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallAPIv2.IPSecSecurityLevel.IPSecWithFullEncryption">
+            <summary>
+                Internet Protocol Security with full encryption of data
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule">
+            <inheritdoc cref="T:WindowsFirewallHelper.IRule" />
+            <summary>
+                Contains properties of a Windows Firewall with Advanced Security rule
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.#ctor(System.String,System.String,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new application rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="filename">Address of the executable file</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.#ctor(System.String,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new application rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.#ctor(System.String,System.UInt16,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new port rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="port">Port number of the rule</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.ApplicationName">
+            <summary>
+                Gets or sets the address of the executable file that this rule is about
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Description">
+            <summary>
+                Gets or sets the description string about this rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.EdgeTraversal">
+            <summary>
+                Gets or sets if EdgeTraversal is available with this rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Grouping">
+            <summary>
+                Gets or sets the rule grouping string
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.ICMPTypesAndCodes">
+            <summary>
+                Gets or sets the list of the acceptable ICMP Messages with this rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Interfaces">
+            <summary>
+                Gets or sets the network interfaces that this rule applies to by name
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.InterfaceTypes">
+            <summary>
+                Gets or sets the network interfaces that this rule applies to by type
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.IsSupported">
+            <summary>
+                Returns a Boolean value indicating if these class is available in the current machine
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.ServiceName">
+            <summary>
+                Gets or sets the name of the service that this rule is about
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.UnderlyingObject">
+            <summary>
+                Returns the underlying Windows Firewall Object
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Equals(WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule)">
+            <inheritdoc />
+            <summary>
+                Determines whether the specified<see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" />.
+            </summary>
+            <param name="other"> The object to compare with the current object.</param>
+            <returns>
+                true if the specified <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> is equal to the current<see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" />;
+                otherwise, false.
+            </returns>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Action">
+            <inheritdoc />
+            <summary>
+                Gets or sets the action that this rules define
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Direction">
+            <inheritdoc />
+            <summary>
+                Gets or sets the data direction that rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.IsEnable">
+            <inheritdoc />
+            <summary>
+                Gets or sets a Boolean value indicating if this rule is active
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.LocalAddresses">
+            <inheritdoc />
+            <summary>
+                Gets or sets the local addresses that rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.LocalPorts">
+            <inheritdoc />
+            <summary>
+                Gets or sets the local ports that rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.LocalPortType">
+            <inheritdoc />
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv2.FirewallAPIv2InvalidProtocolException" accessor="set">Protocol and local port type are not compatible.</exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Name">
+            <inheritdoc />
+            <summary>
+                Gets or sets the name of the rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Profiles">
+            <inheritdoc />
+            <summary>
+                Gets or sets the profiles that this rule belongs to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Protocol">
+            <inheritdoc />
+            <summary>
+                Gets or sets the protocol that rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.RemoteAddresses">
+            <inheritdoc />
+            <summary>
+                Gets or sets the remote addresses that rule applies to
+            </summary>
+            <exception cref="T:System.ArgumentException" accessor="set">
+                An unspecified, multicast, broadcast or loopback IPv6 address was
+                specified.
+            </exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.RemotePorts">
+            <inheritdoc />
+            <summary>
+                Gets or sets the remote ports that rule applies to
+            </summary>
+            <exception cref="T:WindowsFirewallHelper.FirewallAPIv2.FirewallAPIv2InvalidProtocolException" accessor="set">
+                Port number can only be specified for the UDP
+                and TCP protocols.
+            </exception>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Scope">
+            <inheritdoc />
+            <summary>
+                Gets or sets the scope that this rule applies to
+            </summary>
+            <exception cref="T:System.ArgumentException" accessor="set">Use the RemoteAddresses property to set the exact remote addresses</exception>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.op_Equality(WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule,WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> objects for equality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> object</param>
+            <returns>true if two sides are equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.op_Inequality(WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule,WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule)">
+            <summary>
+                Compares two <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> objects for inequality
+            </summary>
+            <param name="left">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> object</param>
+            <param name="right">A <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" /> object</param>
+            <returns>true if two sides are not equal; otherwise false</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" />
+                .
+            </summary>
+            <returns>
+                true if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" />;
+                otherwise, false.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" />. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7">
+            <inheritdoc cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRule" />
+            <summary>
+                Contains properties of a Windows Firewall with Advanced Security rule in Windows 7 and above
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.#ctor(System.String,System.String,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new application rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="filename">Address of the executable file</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.#ctor(System.String,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new application rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.#ctor(System.String,System.UInt16,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new port rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="port">Port number of the rule</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.#ctor(WindowsFirewallHelper.COMInterop.INetFwRule2)">
+            <inheritdoc />
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.EdgeTraversalOptions">
+            <summary>
+                Gets or sets the behavior of this rule about the Edge Traversal
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.IsSupported">
+            <summary>
+                Returns a Boolean value indicating if these class is available in the current machine
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.Equals(WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8">
+            <inheritdoc cref="T:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin7" />
+            <summary>
+                Contains properties of a Windows Firewall with Advanced Security rule in Windows 8 and above
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.#ctor(System.String,System.String,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new application rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="filename">Address of the executable file</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.#ctor(System.String,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new application rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.#ctor(System.String,System.UInt16,WindowsFirewallHelper.FirewallAction,WindowsFirewallHelper.FirewallDirection,WindowsFirewallHelper.FirewallProfiles)">
+            <inheritdoc />
+            <summary>
+                Creates a new port rule for Windows Firewall with Advanced Security
+            </summary>
+            <param name="name">Name of the rule</param>
+            <param name="port">Port number of the rule</param>
+            <param name="action">Action that this rule defines</param>
+            <param name="direction">Data direction in which this rule applies to</param>
+            <param name="profiles">The profile that this rule belongs to</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.ApplicationPackageId">
+            <summary>
+                Gets or sets the PackageId of the Windows Store Application that this rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.IPSecSecurityLevel">
+            <summary>
+                Gets or sets the expected Internet Protocol Security level of this rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.IsSupported">
+            <summary>
+                Returns a Boolean value indicating if these class is available in the current machine
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.LocalUserAuthorizedList">
+            <summary>
+                Gets or sets the list of the authorized local users
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.RemoteMachineAuthorizedList">
+            <summary>
+                Gets or sets the list of the authorized remote machines
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.RemoteUserAuthorizedList">
+            <summary>
+                Gets or sets the list of the authorized remote users
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.UserOwner">
+            <summary>
+                Gets or sets the Domain and User Name of the user that owns this rule
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.Equals(WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallAPIv2.Rules.StandardRuleWin8.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallDirection">
+            <summary>
+                Firewall rule direction
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallDirection.Inbound">
+            <summary>
+                Inbound data
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallDirection.Outbound">
+            <summary>
+                Outbound data
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallManager">
+            <summary>
+                A static class to manage the current active firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallManager.Instance">
+            <summary>
+                Returns a instance of the active firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallManager.ThirdPartyFirewalls">
+            <summary>
+                Returns the list of all registered third party firewalls management instances
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallManager.Version">
+            <summary>
+                Returns the API version of the current active Windows Firewall
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallManager.RegisterFirewall(WindowsFirewallHelper.IFirewall)">
+            <summary>
+                Register an instance of a third party firewall management class
+            </summary>
+            <param name="firewall">An instance of the firewall management class</param>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallPortType">
+            <summary>
+                Firewall port types
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.All">
+            <summary>
+                All local ports
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.Specific">
+            <summary>
+                Specific list of local port numbers
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.RPCDynamicPorts">
+            <summary>
+                TCP Dynamic RPC port range
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.RPCEndpointMapper">
+            <summary>
+                TCP RPC endpoint mapper port range
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.IPHTTPS">
+            <summary>
+                TCP IP-HTTPS port (443)
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.EdgeTraversal">
+            <summary>
+                UDP Teredo traversed packets
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallPortType.PlayToDiscovery">
+            <summary>
+                UDP Play To Discovery packets
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallProfiles">
+            <summary>
+                Firewall rule profile
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProfiles.Domain">
+            <summary>
+                Domain Profile
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProfiles.Private">
+            <summary>
+                Private Profile
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProfiles.Public">
+            <summary>
+                Public Profile
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallProtocol">
+            <summary>
+                A class representing a FirewallProtocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.Any">
+            <summary>
+                Any Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.GRE">
+            <summary>
+                Generic Routing Encapsulation Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.HOPOPT">
+            <summary>
+                Hop-by-Hop Option Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.ICMPv4">
+            <summary>
+                Internet Control Message Protocol for IPv4
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.ICMPv6">
+            <summary>
+                Internet Control Message Protocol for IPv6
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.IGMP">
+            <summary>
+                Internet Group Management Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.IPv6">
+            <summary>
+                Internet Protocol Version 6
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.IPv6Frag">
+            <summary>
+                Internet Protocol Version 6 Fragmentation Header
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.IPv6NoNxt">
+            <summary>
+                Internet Protocol Version 6 No Next Header
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.IPv6Opts">
+            <summary>
+                Internet Protocol Version 6 Options Header
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.IPv6Route">
+            <summary>
+                Internet Protocol Version 6 Route Header
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.L2TP">
+            <summary>
+                Layer 2 Tunneling Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.PGM">
+            <summary>
+                Pragmatic General Multicast Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.TCP">
+            <summary>
+                Transmission Control Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.UDP">
+            <summary>
+                User Datagram Protocol
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallProtocol.VRRP">
+            <summary>
+                Virtual Router Redundancy Protocol
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.#ctor(System.Byte)">
+            <summary>
+                Creates a new <see cref="T:WindowsFirewallHelper.FirewallProtocol" /> based on the protocol number
+            </summary>
+            <param name="protocolNumber">The protocol number to create <see cref="T:WindowsFirewallHelper.FirewallProtocol" /> from</param>
+        </member>
+        <member name="P:WindowsFirewallHelper.FirewallProtocol.ProtocolNumber">
+            <summary>
+                Returns the underlying protocol number of this object
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.Equals(WindowsFirewallHelper.FirewallProtocol)">
+            <summary>
+                Determines whether the specified<see cref="T:WindowsFirewallHelper.FirewallProtocol" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallProtocol" />.
+            </summary>
+            <param name="other"> The object to compare with the current object.</param>
+            <returns>
+                true if the specified <see cref="T:WindowsFirewallHelper.FirewallProtocol" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallProtocol" />;
+                otherwise, false.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.Equals(System.Int32)">
+            <summary>
+                Determines whether the specified protocol number is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallProtocol" />.
+            </summary>
+            <param name="other"> The protocol number to compare with the current object.</param>
+            <returns>
+                true if the specified protocol number is equal to the current <see cref="T:WindowsFirewallHelper.FirewallProtocol" />;
+                otherwise, false.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.TryParse(System.String,WindowsFirewallHelper.FirewallProtocol@)">
+            <summary>
+                Tries to create a <see cref="T:WindowsFirewallHelper.FirewallProtocol" /> object from the the string
+            </summary>
+            <param name="str">The string to be analyzed</param>
+            <param name="firewallProtocol">Returning <see cref="T:WindowsFirewallHelper.FirewallProtocol" /> object</param>
+            <returns>
+                <see langword="true" /> if process ends well and <see cref="T:WindowsFirewallHelper.FirewallProtocol" /> created; otherwise
+                <see langword="false" />
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" /> is equal to the current
+                <see cref="T:WindowsFirewallHelper.FirewallProtocol" />.
+            </summary>
+            <returns>
+                true if the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:WindowsFirewallHelper.FirewallProtocol" />;
+                otherwise, false.
+            </returns>
+            <param name="obj">The object to compare with the current object. </param>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.GetHashCode">
+            <summary>
+                Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+                A hash code for the current <see cref="T:WindowsFirewallHelper.FirewallProtocol" />.
+            </returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.FirewallProtocol.ToString">
+            <summary>
+                Returns a string that represents the current <see cref="T:WindowsFirewallHelper.FirewallProtocol" />.
+            </summary>
+            <returns>
+                A string that represents the current <see cref="T:WindowsFirewallHelper.FirewallProtocol" />.
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.FirewallScope">
+            <summary>
+                Firewall rule scope
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallScope.All">
+            <summary>
+                All scopes
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallScope.LocalSubnet">
+            <summary>
+                Local subnet only
+            </summary>
+        </member>
+        <member name="F:WindowsFirewallHelper.FirewallScope.Specific">
+            <summary>
+                Specific list of addresses
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.IAddress">
+            <summary>
+                Defines expected methods of a network address
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.IAddress.ToString">
+            <summary>
+                Converts the value of the <see cref="T:WindowsFirewallHelper.IAddress" /> to a human and machine readable format
+            </summary>
+            <returns>String value describing the value of the object</returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.IFirewall">
+            <summary>
+                Defines expected methods and properties of a firewall program or API
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IFirewall.IsSupported">
+            <summary>
+                Gets a Boolean value showing if the firewall is supported in this environment.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IFirewall.Name">
+            <summary>
+                Gets the name of the firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IFirewall.Profiles">
+            <summary>
+                Gets the list of all available profiles of the firewall
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IFirewall.Rules">
+            <summary>
+                Gets the list of all registered rules of the firewall
+            </summary>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.String,WindowsFirewallHelper.FirewallProtocol)">
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <param name="protocol">Protocol that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.String)">
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.CreateApplicationRule(WindowsFirewallHelper.FirewallProfiles,System.String,System.String)">
+            <summary>
+                Creates a rule about an executable file (application) to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="filename">Address of the executable file that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.UInt16,WindowsFirewallHelper.FirewallProtocol)">
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <param name="protocol">Protocol that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,WindowsFirewallHelper.FirewallAction,System.UInt16)">
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="action">Action of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.CreatePortRule(WindowsFirewallHelper.FirewallProfiles,System.String,System.UInt16)">
+            <summary>
+                Creates a rule about a port to be registered to a firewall profile
+            </summary>
+            <param name="profiles">The profile or profiles that the rule belongs to</param>
+            <param name="name">Name of the rule</param>
+            <param name="portNumber">Port number that the rule applies to</param>
+            <returns>Returns the newly created rule object implementing <see cref="T:WindowsFirewallHelper.IRule" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.GetProfile(WindowsFirewallHelper.FirewallProfiles)">
+            <summary>
+                Returns a specific firewall profile
+            </summary>
+            <param name="profile">Requested firewall profile</param>
+            <returns>Firewall profile object implementing <see cref="T:WindowsFirewallHelper.IProfile" /> interface</returns>
+        </member>
+        <member name="M:WindowsFirewallHelper.IFirewall.GetProfile">
+            <summary>
+                Returns the active firewall profile, if any
+            </summary>
+            <returns>
+                The active firewall profile object implementing <see cref="T:WindowsFirewallHelper.IProfile" /> interface or null if no firewall
+                profile is currently active
+            </returns>
+        </member>
+        <member name="T:WindowsFirewallHelper.IProfile">
+            <summary>
+                Defines expected properties of a firewall profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.BlockAllInboundTraffic">
+            <summary>
+                Gets or sets a Boolean value that blocks all inbound traffic completely regardless of any rules in this profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.DefaultInboundAction">
+            <summary>
+                Gets or sets the global default behavior regarding inbound traffic
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.DefaultOutboundAction">
+            <summary>
+                Gets or sets the global default behavior regarding outbound traffic
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.Enable">
+            <summary>
+                Gets a Boolean value showing if this firewall profile is enable and available
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.IsActive">
+            <summary>
+                Gets a Boolean value showing if this firewall profile is the currently active profile.
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.ShowNotifications">
+            <summary>
+                Gets or sets a value indicating if the user should get notifications about rules of this profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.Type">
+            <summary>
+                Gets a FirewallProfiles showing the type of this firewall profile
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IProfile.UnicastResponsesToMulticastBroadcast">
+            <summary>
+                Gets or sets a value indicating if the firewall should send unicast responses to the multicast broadcasts
+            </summary>
+        </member>
+        <member name="T:WindowsFirewallHelper.IRule">
+            <summary>
+                Defines expected properties of a firewall rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.Action">
+            <summary>
+                Gets or sets the action that the rules defines
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.Direction">
+            <summary>
+                Gets or sets the data direction that the rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.IsEnable">
+            <summary>
+                Gets or sets a Boolean value indicating if this rule is active
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.LocalAddresses">
+            <summary>
+                Gets or sets the local addresses that the rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.LocalPorts">
+            <summary>
+                Gets or sets the local ports that the rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.LocalPortType">
+            <summary>
+                Gets or sets the type of local ports that the rules applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.Name">
+            <summary>
+                Gets or sets the name of the rule
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.Profiles">
+            <summary>
+                Gets or sets the profiles that this rule belongs to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.Protocol">
+            <summary>
+                Gets or sets the protocol that the rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.RemoteAddresses">
+            <summary>
+                Gets or sets the remote addresses that the rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.RemotePorts">
+            <summary>
+                Gets or sets the remote ports that the rule applies to
+            </summary>
+        </member>
+        <member name="P:WindowsFirewallHelper.IRule.Scope">
+            <summary>
+                Gets or sets the scope that the rule applies to
+            </summary>
+        </member>
+    </members>
+</doc>

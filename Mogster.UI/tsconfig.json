@@ -1,0 +1,35 @@
+﻿{
+  "compilerOptions": {
+    // Disabled because of https://github.com/Microsoft/TypeScript/issues/29172
+    // "outDir": "dist",
+    "outDir": "distjs",
+    "target": "esnext", // Node.js 8
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "declaration": false, //needs to be false till we remove js 
+    "pretty": true,
+    "stripInternal": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "lib": [ "esnext" ]
+  },
+  "paths": {
+    "@models/*": [ "models/*" ]
+  },
+  "include": [
+    "src/**/*",
+    "scripts/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

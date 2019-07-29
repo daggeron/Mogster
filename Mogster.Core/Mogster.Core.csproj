@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98F29BB3-D942-4735-85FC-D5B8D9ABA588}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Mogster.Core</RootNamespace>
+    <AssemblyName>Mogster.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Mogster.UI\plugins\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Moogle face icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FFXIV_ACT_Plugin">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Common">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Config">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.LogFile">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.LogFile.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Memory">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Network">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Overlay">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Overlay.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Parse">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Resource">
+      <HintPath>..\thirdparty\FFXIV_ACT_Plugin.Resource.dll</HintPath>
+    </Reference>
+    <Reference Include="Machina">
+      <HintPath>..\thirdparty\Machina.dll</HintPath>
+    </Reference>
+    <Reference Include="Machina.FFXIV">
+      <HintPath>..\thirdparty\Machina.FFXIV.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EdgeBindings\ZoneRead.cs" />
+    <Compile Include="Events\EffectEvents\EffectAddedEvent.cs" />
+    <Compile Include="Events\EntityHasDiedEvent.cs" />
+    <Compile Include="Events\GenericEvent.cs" />
+    <Compile Include="Events\CombatantRefreshEvent.cs" />
+    <Compile Include="Events\PrismEvents\ISystemMessageEvent.cs" />
+    <Compile Include="Events\PrismEvents\IPCMessageEvent.cs" />
+    <Compile Include="Events\IsWatchingCutscene.cs" />
+    <Compile Include="Events\FFXIVEventBindings.cs" />
+    <Compile Include="Events\SystemEvents\DutyLockoutUpdate.cs" />
+    <Compile Include="Events\SystemEvents\DutyStart.cs" />
+    <Compile Include="Events\SystemEvents\ISystemMessage.cs" />
+    <Compile Include="Events\SystemEvents\DutyComplete.cs" />
+    <Compile Include="Events\SystemEvents\UnknownOp.cs" />
+    <Compile Include="Events\ZoneChangeEvent.cs" />
+    <Compile Include="Harness\FFXIVPlugin\CombatantManager.cs" />
+    <Compile Include="Harness\FFXIVPlugin\DataCollection.cs" />
+    <Compile Include="Events\ShutdownEvent.cs" />
+    <Compile Include="Events\ZoneRefreshEvent.cs" />
+    <Compile Include="Harness\FFXIVPluginHarness.cs" />
+    <Compile Include="Harness\FFXIVPlugin\ScanHPPercent.cs" />
+    <None Include="Harness\SharlayanHarness.cs" />
+    <Compile Include="Helpers\BobParser.cs" />
+    <Compile Include="Helpers\EventManager.cs" />
+    <Compile Include="Helpers\Firewall.cs" />
+    <None Include="Helpers\LINQExtensions.cs" />
+    <Compile Include="Helpers\NativeMethods.cs" />
+    <Compile Include="Harness\FFXIVPlugin\ScanMemory.cs" />
+    <Compile Include="Models\CombatChange.cs" />
+    <Compile Include="Models\NetworkBuff.cs" />
+    <Compile Include="Models\NetworkCast.cs" />
+    <Compile Include="Models\CombatDeath.cs" />
+    <Compile Include="Models\IPCMessage.cs" />
+    <Compile Include="Models\Combatant.cs" />
+    <Compile Include="Models\MessageType.cs" />
+    <Compile Include="Models\Zone.cs" />
+    <Compile Include="Resources\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Injection.cs" />
+    <Compile Include="Harness\FFXIVPlugin\BlankLogOutput.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="TestScanMemory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Mog.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moogle face icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Harness\Sharlayan\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Common.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Config.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.LogFile.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Memory.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Network.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Overlay.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Parse.dll" />
+    <Analyzer Include="..\thirdparty\FFXIV_ACT_Plugin.Resource.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="NetFwTypeLib">
+      <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/noty.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+</head>
+<body>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/mo.min.js"></script>
+    <script type="text/javascript" src="js/bounce.js"></script>
+    <script type="text/javascript" src="js/noty.js"></script>
+    <script type="text/javascript" src="js/howler.min.js"></script>
+    <script type="text/javascript" src="js/store2.min.js"></script>
+    <script>
+
+        function OnZoneChange(data) {
+            new Noty({
+                text: 'Zone Changed: ' + data.ZoneName,
+                type: 'information',
+                theme: 'metroui',
+                layout: 'topRight',
+                timeout: 4000,
+                progressBar: true,
+                animation: {
+                    open: 'animated fadeInDown',
+                    close: 'animated fadeOutUp'
+                },
+                callbacks: {
+                    onShow: function () {
+                        new Howl({
+                            //src: ['audio/defeat/pacmandie.ogg'],
+                            src: ['audio/belltollnightelf.ogg'],
+                            autoplay: true,
+                            volume: 0.4
+                        });
+                    }
+                }
+            }).show();
+
+        }
+        function OnActorDeath(data) {
+            new Noty({
+                text: data.targetName + ' has died',
+                type: 'error',
+                theme: 'metroui',
+                layout: 'topRight',
+                timeout: 9000,
+                progressBar: true,
+                animation: {
+                    open: 'animated fadeInDown',
+                    close: 'animated fadeOutUp'
+                },
+                callbacks: {
+                    onShow: function () {
+                        new Howl({
+                            src: ['audio/belltollnightelf.ogg'],
+                            autoplay: true,
+                            volume: 0.4
+                        });
+                    }
+                }
+                }).show();
+        }
+        function TestMessage(message) {
+            new Noty({
+                text: message,
+                type: 'information',
+                theme: 'metroui',
+                layout: 'topRight',
+                timeout: 4000,
+                progressBar: true,
+                animation: {
+                    open: 'animated fadeInDown',
+                    close: 'animated fadeOutUp'
+                }
+            }).show();
+        }
+
+        window.addEventListener("Notification", (data) => {
+            TestMessage(data.detail);
+        }, false)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[submodule "thirdparty/sharlayan"]
+	path = thirdparty/sharlayan
+	url = https://github.com/serious-casuals/sharlayan.git
+	branch = master
+[submodule "thirdparty/ffxivapp-common"]
+	path = thirdparty/ffxivapp-common
+	url = https://github.com/FFXIVAPP/ffxivapp-common.git
+	branch = master
+[submodule "thirdparty/ffxivapp-props"]
+	path = thirdparty/ffxivapp-props
+	url = https://github.com/FFXIVAPP/ffxivapp-props.git
+	branch = master

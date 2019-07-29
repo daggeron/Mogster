@@ -1,0 +1,79 @@
+{
+  "name": "mogster",
+  "version": "0.0.2",
+  "author": {
+    "name": "Jason Crown",
+    "email": "jason@dc20.net"
+  },
+  "productName": "Mogster",
+  "description": "UI side of Mogster",
+  "main": "./distjs/src/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "scripts2": "xcopy /E /Y distjs\\scripts\\*.* scripts\\ && xcopy /Y distjs\\src\\ffxiv\\Combatant.js scripts\\",
+    "scripts": "xcopy /Y distjs\\src\\ffxiv\\Combatant.js distjs\\scripts\\ && xcopy /Y distjs\\src\\ffxiv\\Combatant.js scripts\\",
+    "postinstall": "electron-builder install-app-deps",
+    "start": "tsc && yarn scripts && electron .",
+    "pack": "tsc && electron-builder --dir",
+    "dist": "tsc && yarn scripts && electron-builder"
+  },
+  "devDependencies": {
+    "@types/electron-store": "^1.3.1",
+    "@types/node": "^12.6.8",
+    "electron": "4.2.8",
+    "electron-builder": "^21.1.1",
+    "electron-packager": "^14.0.1",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "config": "^3.2.2",
+    "discord.js": "github:discordjs/discord.js",
+    "electron-edge-js": "^12.0.0",
+    "electron-log": "^3.0.6",
+    "electron-positioner": "^4.1.0",
+    "electron-root-path": "^1.0.9",
+    "eventemitter2": "^5.0.1",
+    "ffmpeg-static": "github:serious-casuals/ffmpeg-static",
+    "fs-nextra": "^0.4.5",
+    "klasa": "github:serious-casuals/klasa",
+    "mobx": "^5.13.0",
+    "node-opus": "^0.3.2",
+    "rethinkdbdash": "^2.3.31",
+    "serialize-error": "^4.1.0",
+    "vm2": "^3.8.2",
+    "winston": "^3.2.1",
+    "zucc": "^0.1.2"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@models": "distjs/models"
+  },
+  "build": {
+    "files": [
+      "**/*",
+      "!src${/*}",
+      "!media${/*}",
+      "!audio${/*}",
+      "!discord${/*}",
+      "!plugins${/*}",
+      "!scripts${/*}",
+      "!config${/*}"
+    ],
+    "appId": "net.dc20.mogster",
+    "extraFiles": [
+      {
+        "from": "distjs\\scripts",
+        "to": "scripts",
+        "filter": [ "**/*", "!**/*.map" ]
+      },
+      "audio",
+      "discord",
+      "plugins",
+
+      "config"
+    ]
+  }
+}
