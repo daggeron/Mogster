@@ -1,6 +1,4 @@
-﻿const { util: { codeBlock } } = require('klasa');
-
-const fs = require('fs');
+﻿const fs = require('fs');
 
 const winston = require('winston');
 const log = winston.createLogger({
@@ -148,9 +146,7 @@ class AudioManager {
             if (!this.connection) throw 'This dj table is broken! Try again later...';
         }
 
-        let stream = fs.createReadStream(path);
-
-        this.connection.play(stream, {
+        this.connection.play(path, {
             bitrate: this.voiceChannel.bitrate / 1000,
             passes: 2,
             volume: 0.5
@@ -199,4 +195,4 @@ class AudioManager {
 
 }
 
-module.exports = AudioManager;
+module.exports.AudioManager = AudioManager;

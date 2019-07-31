@@ -37,8 +37,6 @@
     <Content Include=".gitignore" />
     <Content Include="package.json" />
     <Content Include="scripts\adjutant\encounters\inn.js" />
-    <Content Include="scripts\adjutant\encounters\test.test" />
-    <Content Include="scripts\adjutant\encounters\titaniaex.js" />
     <Content Include="scripts\adjutant\index.js" />
     <Content Include="scripts\Combatant.js" />
     <Content Include="scripts\combined.log" />
@@ -64,6 +62,13 @@
     <Content Include="scripts\test\libs\mobx\package.json" />
     <Content Include="scripts\test\libs\mobx\README.md" />
     <Content Include="scripts\test\scratchpad.js" />
+    <Content Include="source\discord\client.js" />
+    <Content Include="source\discord\commands\FinalFantasy\dps.js" />
+    <Content Include="source\discord\commands\FinalFantasy\srank.js" />
+    <Content Include="source\discord\commands\Random\cat.js" />
+    <Content Include="source\discord\commands\Random\trumpquote.js" />
+    <Content Include="source\discord\lib\extensions\SneyraGuild.js" />
+    <Content Include="source\discord\lib\structures\AudioManger.js" />
     <Content Include="source\index.js" />
     <Content Include="source\overlay\notification\css\animate.css" />
     <Content Include="source\overlay\notification\css\normalize.css" />
@@ -116,6 +121,9 @@
     <Content Include="source\overlay\sound\sound.js" />
     <Content Include="source\static\Mog.ico" />
     <Content Include="source\static\moogle.ico" />
+    <Content Include="source\test.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\icon.ico" />
     <Content Include="static\Mog.ico" />
     <Content Include="static\moogle.ico" />
@@ -138,6 +146,29 @@
     <Folder Include="scripts\test\libs\mobx\lib\types\" />
     <Folder Include="scripts\test\libs\mobx\lib\utils\" />
     <Folder Include="source\" />
+    <Folder Include="source\discord\" />
+    <Folder Include="source\discord\arguments\" />
+    <Folder Include="source\discord\bwd\" />
+    <Folder Include="source\discord\bwd\provider\" />
+    <Folder Include="source\discord\bwd\provider\json\" />
+    <Folder Include="source\discord\bwd\provider\json\clientStorage\" />
+    <Folder Include="source\discord\bwd\provider\json\guilds\" />
+    <Folder Include="source\discord\bwd\provider\json\users\" />
+    <Folder Include="source\discord\commands\" />
+    <Folder Include="source\discord\commands\FinalFantasy\" />
+    <Folder Include="source\discord\commands\Random\" />
+    <Folder Include="source\discord\events\" />
+    <Folder Include="source\discord\extendables\" />
+    <Folder Include="source\discord\finalizers\" />
+    <Folder Include="source\discord\inhibitors\" />
+    <Folder Include="source\discord\languages\" />
+    <Folder Include="source\discord\lib\" />
+    <Folder Include="source\discord\lib\extensions\" />
+    <Folder Include="source\discord\lib\structures\" />
+    <Folder Include="source\discord\monitors\" />
+    <Folder Include="source\discord\providers\" />
+    <Folder Include="source\discord\serializers\" />
+    <Folder Include="source\discord\tasks\" />
     <Folder Include="source\ffxiv\" />
     <Folder Include="source\overlay\" />
     <Folder Include="source\overlay\notification\" />
@@ -206,6 +237,9 @@
     <TypeScriptCompile Include="source\ffxiv\CombatantManager.ts" />
     <TypeScriptCompile Include="source\ffxiv\internal.ts" />
     <TypeScriptCompile Include="source\sandbox\sandbox.ts" />
+    <TypeScriptCompile Include="source\sandbox\test.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

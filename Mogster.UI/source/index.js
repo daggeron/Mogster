@@ -1,5 +1,14 @@
 'use strict';
+
 const { app, ipcMain, Menu, Tray } = require('electron');
+const process = require('process');
+const rootPath = require('electron-root-path').rootPath;
+const log = require('electron-log');
+const path = require('path');
+const Store = require('electron-store');
+const { fork } = require('child_process');
+const { AdjutantDiscord } = require('./discord/client');
+const HeadlessSandbox = require('./sandbox/test').HeadlessSandbox;
 
 console.log('');
 console.log("DEV WARNING!!!! Sandbox is currently disabled!!");
@@ -9,25 +18,20 @@ if (!app.requestSingleInstanceLock())
 
 //app.enableSandbox();
 
-const process = require('process');
-const rootPath = require('electron-root-path').rootPath;
-const log = require('electron-log');
-const path = require('path');
-const Store = require('electron-store');
+
 
 const store = new Store({
     schema: {
         "discord": {
-            "use": { "type": "boolean", "default":"false" },
+            "use": { "type": "boolean", "default": "false" },
             "token": { "type": "string", "default": "changeme" },
             "guild": { "type": "string", "default": "changeme" },
             "channel": { "type": "string", "default": "changeme" }
         }
-    }, 
+    },
     cwd: path.resolve(rootPath, 'config')
 });
 
-const { fork } = require('child_process');
 //const Notifications = require('./overlay/notification/notification');
 const SoundWindow = require('./soundplayer/sound');
 
@@ -51,9 +55,10 @@ class MogsterUI {
     constructor() {
         //this.notificationWindow = null;
         this.soundWindow = null;
-
         this.forkProcess = null;
         this.shuttingDown = false;
+        this.discord = null;
+
     }
 
     async init() {
@@ -62,62 +67,47 @@ class MogsterUI {
         await this.startSandbox();
 
         if (store.get("discord.use"))
-            this.startDiscord();
+            await this.startDiscord();
     }
 
     async startDiscord() {
         let token = store.get("discord.token");
         let channelID = store.get("discord.channel");
         let guildID = store.get("discord.guild");
-
-        this.voiceClient = fork(path.resolve(rootPath, 'discord/client.js'),
-            [token, path.resolve(rootPath, 'audio'), channelID, guildID], {
-                stdio: ['inherit', 'inherit', 'inherit', 'ipc']
-            });
-
-        var restartMethod = this.reloadSandbox.bind(this);
-        this.voiceClient.on('exit', function (code) {
-            if (store.get("discord.use")) {
-                log.error("HeadlessSandbox process terminated unexpectedly. Restarting in 5 seconds.")
-                setTimeout(restartMethod, 5000);
-            } else {
-                this.voiceClient = null;
-                ipcMain.removeListener('Discord', discordListener);
+        this.discord = new AdjutantDiscord(token, guildID, channelID, path.resolve(rootPath, 'audio'));
+        await this.discord.login();
+        await this.discord.join();
+    }
+    async playDiscordAudio(path) {
+        if (this.discord !== null) {
+            try {
+                await this.discord.play(path);
+            } catch (error) {
+                console.log(error);
             }
-
-        })
-        let discordListener = (data) => {
-            log.info('discord ', data);
-            this.voiceClient.send(data);
         }
-        ipcMain.on('Discord', discordListener);
 
-        this.voiceClient.on('message', data => {
-
-        });
-
-        log.debug('Done forking');
     }
-
-    restartDiscord() {
-        this.shutdownSandbox();
-        this.startSandbox();
-    }
-
-    async shutdownDiscord() {
-        log.debug("Shutting down DiscordBot");
-
-        if (this.voiceClient !== null) {
-            this.voiceClient.send({ 'event': 'RemoteShutdown', 'payload': 'ignored' });
-
-            setTimeout(() => { this.voiceClient.kill() }, 2000);
+    async stopDiscordAudio() {
+        if (this.discord !== null) {
+            try {
+                await this.discord.stop();
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
-
+    async stopDiscord() {
+        if (this.discord !== null) {
+            try {
+                await this.discord.disconnect();
+            } catch (exception) { }
+            this.discord = null;
+        }
+    }
 
     async startSandbox() {
-        log.debug('Forking');
-        this.forkProcess = fork(path.resolve(app.getAppPath(),'dist-js', 'sandbox/sandbox.js'),
+        this.forkProcess = fork(path.resolve(app.getAppPath(), 'dist-js', 'sandbox/sandbox.js'),
             [path.resolve(rootPath, 'scripts')], {
                 stdio: ['inherit', 'inherit', 'inherit', 'ipc']
             });
@@ -146,15 +136,14 @@ class MogsterUI {
 
             let event = data.event;
             let payload = data.payload;
-            
-            //this.notificationWindow.pushEvent(event, payload);
-            //this.soundWindow.pushEvent(event, payload);
-            
+
             //Discord may or may not be loaded.
             switch (event) {
                 case 'RemotePlay':
+                    this.playDiscordAudio(payload);
+                    break;
                 case 'RemoteStop':
-                    ipcMain.emit("Discord", { 'event': event, 'payload': payload });
+                    this.stopDiscord();
                     break;
                 case 'PlaySound':
                 case "StopSound":
@@ -180,9 +169,9 @@ class MogsterUI {
     }
 
     async initApp() {
-        app.on('before-quit',  (event) => {
-            this.shutdownDiscord();
-            
+        app.on('before-quit', async (event) => {
+            //this.shutdownDiscord();
+            await this.stopDiscord();
             this.shutdownSandbox();
 
         });
@@ -190,7 +179,7 @@ class MogsterUI {
         app.on('ready', () => {
             this.createNotificationWindow();
 
-            this.tray = new Tray(path.resolve(__dirname,'../', 'static/moogle.ico'));
+            this.tray = new Tray(path.resolve(__dirname, '../', 'static/moogle.ico'));
             const menu = Menu.buildFromTemplate([
                 {
                     label: 'Reload Scripts', click: (item, window, event) => {
@@ -200,7 +189,6 @@ class MogsterUI {
                 },
                 {
                     label: 'Stop local Audio Playback', click: (item, window, event) => {
-                        ipcMain.emit("Discord", { 'event': 'RemoteStop', 'payload': '' });
                         ipcMain.emit("StopSound");
                     }
                 },
@@ -212,21 +200,21 @@ class MogsterUI {
                                 this.startDiscord();
                             } else {
                                 store.set("discord.use", false)
-                                this.shutdownDiscord();
-                            } 
-                        } 
+                                this.stopDiscord();
+                                
+                            }
+                        }
                     }, {
-                            label: 'Stop local Audio Playback', click: (item, window, event) => {
-                                ipcMain.emit("Discord", { 'event': 'RemoteStop', 'payload': '' });
-                                ipcMain.emit("StopSound");
-                            }
-                        }, {
-                            label: 'Play Test Sound', click: (item, window, event) => {
-                                ipcMain.emit("Discord", { 'event': 'RemotePlay', 'payload': 'belltollnightelf.ogg' });
-                            }
-                        }]
+                        label: 'Stop local Audio Playback', click: (item, window, event) => {
+                            ipcMain.emit("StopSound");
+                        }
+                    }, {
+                        label: 'Play Test Sound', click: (item, window, event) => {
+                            this.playDiscordAudio('belltollnightelf.ogg');
+                        }
+                    }]
                 },
-                
+
                 { type: 'separator' },
                 { role: 'quit' } // "role": system prepared action menu
             ]);
