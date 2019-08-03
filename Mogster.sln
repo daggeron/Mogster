@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogster.Core", "Mogster.Cor
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Mogster.UI", "Mogster.UI\Mogster.UI.njsproj", "{F1CE9FFF-4E80-4C97-9054-71A951E16893}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogster.Replay", "Mogster.Replay\Mogster.Replay.csproj", "{16B9C48F-203C-4BCB-8146-EA54C9217257}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F1CE9FFF-4E80-4C97-9054-71A951E16893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CE9FFF-4E80-4C97-9054-71A951E16893}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CE9FFF-4E80-4C97-9054-71A951E16893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B9C48F-203C-4BCB-8146-EA54C9217257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B9C48F-203C-4BCB-8146-EA54C9217257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B9C48F-203C-4BCB-8146-EA54C9217257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B9C48F-203C-4BCB-8146-EA54C9217257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
