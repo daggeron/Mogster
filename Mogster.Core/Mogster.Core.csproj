@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EdgeBindings\CombatantManagerReader.cs" />
     <Compile Include="EdgeBindings\ZoneRead.cs" />
     <Compile Include="Events\EffectEvents\EffectAddedEvent.cs" />
     <Compile Include="Events\EntityHasDiedEvent.cs" />
@@ -143,25 +144,33 @@
     <Compile Include="Events\SystemEvents\DutyComplete.cs" />
     <Compile Include="Events\SystemEvents\UnknownOp.cs" />
     <Compile Include="Events\ZoneChangeEvent.cs" />
+    <Compile Include="Harness\FFXIVPlugin\CLF.cs" />
     <Compile Include="Harness\FFXIVPlugin\CombatantManager.cs" />
+    <None Include="Harness\FFXIVPlugin\CombatantProcessor.cs" />
+    <Compile Include="Harness\FFXIVPlugin\CustomLogFormat.cs" />
     <Compile Include="Harness\FFXIVPlugin\DataCollection.cs" />
     <Compile Include="Events\ShutdownEvent.cs" />
     <Compile Include="Events\ZoneRefreshEvent.cs" />
     <Compile Include="Harness\FFXIVPluginHarness.cs" />
     <Compile Include="Harness\FFXIVPlugin\ScanHPPercent.cs" />
     <None Include="Harness\SharlayanHarness.cs" />
+    <Compile Include="Harness\FFXIVPlugin\Server_MessageHeader.cs" />
+    <Compile Include="Harness\FFXIVPlugin\Server_MessageType.cs" />
     <Compile Include="Helpers\BobParser.cs" />
     <Compile Include="Helpers\EventManager.cs" />
     <Compile Include="Helpers\Firewall.cs" />
     <None Include="Helpers\LINQExtensions.cs" />
     <Compile Include="Helpers\NativeMethods.cs" />
     <Compile Include="Harness\FFXIVPlugin\ScanMemory.cs" />
+    <Compile Include="Models\Combatant64Struct.cs" />
+    <Compile Include="Models\CombatantEx.cs" />
     <Compile Include="Models\CombatChange.cs" />
+    <Compile Include="Models\NetworkAbility.cs" />
     <Compile Include="Models\NetworkBuff.cs" />
     <Compile Include="Models\NetworkCast.cs" />
     <Compile Include="Models\CombatDeath.cs" />
     <Compile Include="Models\IPCMessage.cs" />
-    <Compile Include="Models\Combatant.cs" />
+    <Compile Include="Models\CombatantExStruct.cs" />
     <Compile Include="Models\MessageType.cs" />
     <Compile Include="Models\Zone.cs" />
     <Compile Include="Resources\Resources.Designer.cs">

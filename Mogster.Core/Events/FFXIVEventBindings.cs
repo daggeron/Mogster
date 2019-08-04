@@ -3,6 +3,7 @@ using FFXIV_ACT_Plugin.Common.Models;
 using FFXIV_ACT_Plugin.Memory;
 using FFXIV_ACT_Plugin.Memory.MemoryProcessors;
 using Mogster.Core.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Prism.Events;
 using System;
@@ -41,10 +42,9 @@ namespace Mogster.Core.Events
             dataEvent.OutgoingAbility += new DataEvent.OutgoingAbilityDelegate(OnOutgoingAbility);
             dataEvent.IncomingAbility += new DataEvent.IncomingAbilityDelegate(OnIncomingAbility);
 
-            dataEvent.EffectAdded = new DataEvent.EffectAddedDelegate(OnEffectAdded);
+            dataEvent.EffectAdded += new DataEvent.EffectAddedDelegate(OnEffectAdded);
 
             eventAggregator.GetEvent<ZoneRefreshEvent>().Subscribe(OnZoneRefreshRequest);
-
             eventAggregator.GetEvent<GenericEvent<CombatChange>>().Subscribe(OnCombatChange);
             eventAggregator.GetEvent<EntityHasDiedEvent>().Subscribe(OnEntityDeath);
 
@@ -52,6 +52,9 @@ namespace Mogster.Core.Events
 
         private void OnEffectAdded(object effect)
         {
+            string json = JsonConvert.SerializeObject(effect, Formatting.Indented);
+            Console.WriteLine(json);
+
             eventAggregator.GetEvent<IPCMessageEvent>().Publish(IPCMessage.Get(MessageType.EffectAdded, (Effect)effect));
         }
 

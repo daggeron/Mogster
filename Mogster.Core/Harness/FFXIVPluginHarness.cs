@@ -60,7 +60,7 @@ namespace Mogster.Core.Harness
             this.IoCContainer.Register<IDataSubscription, FFXIV_ACT_Plugin.Memory.DataSubscription>().AsSingleton();
             this.IoCContainer.Register<IDataRepository, FFXIV_ACT_Plugin.Memory.DataRepository>().AsSingleton();
             this.IoCContainer.Register<ILogOutput, BlankLogOutput>().AsSingleton();
-            this.IoCContainer.Register<ILogFormat, LogFormat>().AsSingleton();
+            this.IoCContainer.Register<ILogFormat, CLF>().AsSingleton();
             this.IoCContainer.Register<IProcessManager, ProcessManager>().AsSingleton();
             this.IoCContainer.Register<ISignatureManager, SignatureManager>().AsSingleton();
             this.IoCContainer.Register<IScanMemory, Mogster.Core.Harness.FFXIVPlugin.ScanMemory>().AsSingleton();

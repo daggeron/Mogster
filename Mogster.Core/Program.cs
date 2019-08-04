@@ -14,9 +14,15 @@ using System.Linq;
 using Thaliak.Network.Utilities;
 using WindowsFirewallHelper;
 using Newtonsoft.Json;
-using FFXIV_ACT_Plugin.Common.Models;
+
 using System.IO;
 using FFXIV_ACT_Plugin.Memory.MemoryProcessors;
+using System.Diagnostics;
+using Machina.FFXIV;
+using Machina;
+using Mogster.Core.Harness.FFXIVPlugin;
+using FFXIV_ACT_Plugin.Memory.MemoryReader;
+using Mogster.Core.Models;
 
 namespace Mogster.Core
 {
@@ -36,6 +42,8 @@ namespace Mogster.Core
         private IMobArrayProcessor mobArrayProcessor;
         private ICombatantManager combatantManager;
         private FFXIVPluginHarness ffxivPlugin;
+        private DataEvent dataEvent;
+        private IReadCombatant readCombatant;
 
         private System.Timers.Timer Timer = new System.Timers.Timer();
 
@@ -48,16 +56,17 @@ namespace Mogster.Core
             ffxivPlugin.IoCContainer.Register<IEventAggregator, EventAggregator>().AsSingleton();
             eventAggregator = ffxivPlugin.IoCContainer.Resolve<IEventAggregator>();
             processManager = ffxivPlugin.IoCContainer.Resolve<IProcessManager>();
-            eventAggregator.GetEvent<CombatantRefreshEvent>().Subscribe(() => {
+            eventAggregator.GetEvent<CombatantRefreshEvent>().Subscribe(() =>
+            {
                 var a = 1;
             });
 
             Initialize();
-            
-            
+
+
             Timer.Interval = 50;
 
-            Timer.Elapsed += new System.Timers.ElapsedEventHandler((e,d) =>
+            Timer.Elapsed += new System.Timers.ElapsedEventHandler((e, d) =>
             {
                 if (processManager.Verify())
                     EventManager.SetAll("scan_event");
@@ -86,18 +95,143 @@ namespace Mogster.Core
             ffxivPlugin.UpdateParseScanSettings(parseSettings);
 
             Logger.Debug("FFXIVEVENTBINDINGS");
+            dataEvent = ffxivPlugin.IoCContainer.Resolve<DataEvent>();
+
             ffxivPlugin.IoCContainer.Resolve<FFXIVEventBindings>();
             combatantManager = ffxivPlugin.IoCContainer.Resolve<ICombatantManager>();
             mobArrayProcessor = ffxivPlugin.IoCContainer.Resolve<IMobArrayProcessor>();
             
+            readCombatant = ffxivPlugin.IoCContainer.Resolve<IReadCombatant>();
             //sharlayanHarness = ffxivPlugin.IoCContainer.Resolve<SharlayanHarness>();
 
             SetShutdownRequestHook();
         }
 
+        FFXIVNetworkMonitor _monitor = new FFXIVNetworkMonitor();
+
+        public void StopScan()
+        {
+            if (this._monitor == null)
+                return;
+            this._monitor.MessageReceived = (FFXIVNetworkMonitor.MessageReceivedDelegate)null;
+            this._monitor.MessageSent = (FFXIVNetworkMonitor.MessageSentDelegate)null;
+            this._monitor.Stop();
+            this._monitor = (FFXIVNetworkMonitor)null;
+        }
+
+        public unsafe void Monitor_MessageReceived(string id, long epoch, byte[] message)
+        {
+            try
+            {
+                DateTime packetDate;
+                if (epoch > 0L)
+                {
+                    packetDate = Utility.EpochToDateTime(epoch).ToLocalTime();
+                }
+                else
+                {
+                    packetDate = DateTime.MinValue;
+                }
+                if (message.Length >= sizeof(Server_MessageHeader))
+                {
+                    fixed (byte* buffer = message)
+                    {
+                        Server_MessageHeader* messageHeader = (Server_MessageHeader*)buffer;
+
+                        Server_MessageType messageType = ((Server_MessageHeader*)buffer)->MessageType;
+                        //                        if (messageType == Server_MessageType.)
+                        //{
+                        Console.WriteLine(messageHeader->LoginUserID + " " + messageType);
+                        //}
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void Monitor_MessageSent(string id, long epoch, byte[] message)
+        {
+        }
+        public void testNW()
+        {
+            System.Timers.Timer testTimer = new System.Timers.Timer(2000);
+            testTimer.Elapsed += (sender, args) =>
+            {
+                FFXIV_ACT_Plugin.Common.Models.Combatant combatant;
+
+                try
+                {
+                    combatant = combatantManager.GetCombatantByPointer(mobArrayProcessor.PrimaryPlayerPointer);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    throw ex;
+                }
+
+                unsafe
+                {
+                    if (combatant.TargetID != 0)
+                    {
+                        var tc = combatantManager.GetCombatantById(combatant.TargetID);
+                        CombatantExStruct* ptr = (CombatantExStruct*)(void*)readCombatant.Read(tc.Pointer);
+
+                        bool InCombat = (ptr->CombatFlags & (1 << 1)) != 0;
+
+                        bool IsAggressive = (ptr->CombatFlags & (1 << 0)) != 0;
+
+                        bool IsAgroed = (ptr->AgroFlags & 1) > 0;
+                        Console.WriteLine(IsAggressive + " " + IsAgroed + " " + InCombat);
+                    }
+
+
+                }
+
+            };
+            testTimer.Start();
+            /*_monitor.MessageReceived = delegate (string id, long epoch, byte[] message)
+            {
+                this.Monitor_MessageReceived(id, epoch, message);
+            };
+            dataEvent.NetworkReceived = (DataEvent.NetworkReceivedDelegate)((id, epoch, message) => this.Monitor_MessageReceived(id, epoch, message));*/
+        }
+        public void testNW2()
+        {
+            CurrentProcess currentProcess = this.processManager.Current;
+            int? num;
+            if (currentProcess == null)
+            {
+                num = null;
+            }
+            else
+            {
+                Process process = currentProcess.Process;
+                num = ((process != null) ? new int?(process.Id) : null);
+            }
+            int num2 = num ?? 0;
+
+            _monitor = new FFXIVNetworkMonitor();
+            _monitor.MonitorType = TCPNetworkMonitor.NetworkMonitorType.RawSocket;
+            _monitor.ProcessID = (uint)num2;
+
+            _monitor.MessageReceived = delegate (string id, long epoch, byte[] message)
+            {
+                this.Monitor_MessageReceived(id, epoch, message);
+            };
+
+            _monitor.MessageSent = delegate (string id, long epoch, byte[] message)
+            {
+                this.Monitor_MessageSent(id, epoch, message);
+            };
+
+            _monitor.Start();
+        }
+
         public void SetShutdownRequestHook()
         {
-            
+
             eventAggregator.GetEvent<ShutdownEvent>().Subscribe(() =>
             {
                 Cleanup();
@@ -114,11 +248,13 @@ namespace Mogster.Core
 
         public async Task<object> BindEventLoop(Func<object, Task<object>> input)
         {
+            //testNW();
+
             callBack = input;
 
             test();
 
-            eventAggregator.GetEvent<IPCMessageEvent>().Subscribe((message) => this.callBack.Invoke(message.ToString()));
+            eventAggregator.GetEvent<IPCMessageEvent>().Subscribe((message) => this.callBack.Invoke(message.ToString()), ThreadOption.BackgroundThread);
 
             callBack.Invoke("{'hello':'world'}");
 
@@ -138,12 +274,13 @@ namespace Mogster.Core
                 throw new Exception("Couldn't find you!");
             }
 
-            Combatant combatant;
+            FFXIV_ACT_Plugin.Common.Models.Combatant combatant;
 
             try
             {
                 combatant = combatantManager.GetCombatantByPointer(mobArrayProcessor.PrimaryPlayerPointer);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 throw ex;
@@ -153,7 +290,7 @@ namespace Mogster.Core
         }
         public async Task<object> GetCombatantList(dynamic input)
         {
-            
+
             //var cl = combatantManager.Combatants.Where(mc => mc.ID != 0).GroupBy(mc => mc.ID).Select(mc => mc.First()).ToDictionary(mc => mc.ID, mc => mc.Name);
             try
             {
@@ -166,13 +303,12 @@ namespace Mogster.Core
                     outputFile.Write(json);
                 }
 
-                Console.WriteLine(json);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-            //string json = JsonConvert.SerializeObject(cl, Formatting.Indented);
-            //Console.WriteLine(json);
+
             return null;
         }
 
