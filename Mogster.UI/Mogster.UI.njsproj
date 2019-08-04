@@ -36,39 +36,17 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="package.json" />
-    <Content Include="scripts\adjutant\encounters\eden1s.js" />
-    <Content Include="scripts\adjutant\encounters\eulmore.js">
+    <Content Include="scripts\research\encounters\eden1s.js" />
+    <Content Include="scripts\research\encounters\eulmore.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="scripts\adjutant\encounters\inn.js" />
-    <Content Include="scripts\adjutant\encounters\seiryuex.js">
+    <Content Include="scripts\research\encounters\inn.js" />
+    <Content Include="scripts\research\encounters\seiryuex.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="scripts\adjutant\index.js" />
+    <Content Include="scripts\research\index.js" />
     <Content Include="scripts\Combatant.js" />
-    <Content Include="scripts\combined.log" />
-    <Content Include="scripts\error.log" />
     <Content Include="scripts\libs\combatant.js" />
-    <Content Include="scripts\testingevents\index.bak" />
-    <Content Include="scripts\test\encounters\titaniaex.js" />
-    <Content Include="scripts\test\index.js" />
-    <Content Include="scripts\test\index2.js" />
-    <Content Include="scripts\test\libs\mobx\CHANGELOG.md" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.es6.js" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.es6.js.map" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.js" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.js.flow" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.js.map" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.min.js" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.module.js" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.module.js.map" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.umd.js" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.umd.js.map" />
-    <Content Include="scripts\test\libs\mobx\lib\mobx.umd.min.js" />
-    <Content Include="scripts\test\libs\mobx\LICENSE" />
-    <Content Include="scripts\test\libs\mobx\package.json" />
-    <Content Include="scripts\test\libs\mobx\README.md" />
-    <Content Include="scripts\test\scratchpad.js" />
     <Content Include="source\discord\AudioManager.js">
       <SubType>Code</SubType>
     </Content>
@@ -135,19 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="scripts\" />
-    <Folder Include="scripts\adjutant\" />
-    <Folder Include="scripts\adjutant\encounters\" />
+    <Folder Include="scripts\research\" />
+    <Folder Include="scripts\research\encounters\" />
     <Folder Include="scripts\libs\" />
-    <Folder Include="scripts\testingevents\" />
-    <Folder Include="scripts\test\" />
-    <Folder Include="scripts\test\encounters\" />
-    <Folder Include="scripts\test\libs\" />
-    <Folder Include="scripts\test\libs\mobx\" />
-    <Folder Include="scripts\test\libs\mobx\lib\" />
-    <Folder Include="scripts\test\libs\mobx\lib\api\" />
-    <Folder Include="scripts\test\libs\mobx\lib\core\" />
-    <Folder Include="scripts\test\libs\mobx\lib\types\" />
-    <Folder Include="scripts\test\libs\mobx\lib\utils\" />
     <Folder Include="source\" />
     <Folder Include="source\discord\" />
     <Folder Include="source\ffxiv\" />
@@ -166,61 +134,11 @@
     <Folder Include="static\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\action.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\actiondecorator.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\autorun.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\become-observed.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\computed.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\configure.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\decorate.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\extendobservable.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\extras.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\flow.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\intercept-read.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\intercept.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\iscomputed.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\isobservable.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\object-api.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\observable.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\observabledecorator.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\observe.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\tojs.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\trace.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\transaction.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\api\when.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\action.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\atom.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\computedvalue.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\derivation.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\globalstate.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\observable.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\reaction.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\core\spy.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\internal.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\mobx.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\dynamicobject.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\intercept-utils.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\listen-utils.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\modifiers.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observablearray.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observablemap.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observableobject.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observableset.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\observablevalue.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\types\type-utils.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\comparer.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\decorators.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\eq.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\iterable.d.ts" />
-    <TypeScriptCompile Include="scripts\test\libs\mobx\lib\utils\utils.d.ts" />
     <TypeScriptCompile Include="source\ffxiv\bindings.ts" />
     <TypeScriptCompile Include="source\ffxiv\Combatant.ts" />
     <TypeScriptCompile Include="source\ffxiv\CombatantManager.ts" />
     <TypeScriptCompile Include="source\ffxiv\internal.ts" />
     <TypeScriptCompile Include="source\sandbox\sandbox.ts" />
-    <TypeScriptCompile Include="source\sandbox\test.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

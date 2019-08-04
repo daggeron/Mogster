@@ -147,7 +147,6 @@
     <Compile Include="Harness\FFXIVPlugin\CLF.cs" />
     <Compile Include="Harness\FFXIVPlugin\CombatantManager.cs" />
     <None Include="Harness\FFXIVPlugin\CombatantProcessor.cs" />
-    <Compile Include="Harness\FFXIVPlugin\CustomLogFormat.cs" />
     <Compile Include="Harness\FFXIVPlugin\DataCollection.cs" />
     <Compile Include="Events\ShutdownEvent.cs" />
     <Compile Include="Events\ZoneRefreshEvent.cs" />
