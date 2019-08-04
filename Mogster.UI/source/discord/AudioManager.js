@@ -15,7 +15,6 @@ class AudioManager {
 	 * @typedef {Object} MusicManagerSong
 	 * @property {string} url The video id
 	 * @property {string} title The title of the video
-	 * @property {KlasaUser | string} user The user that requested this song
 	 * @property {number} loudness The loudness for this song, reserved for future
 	 * @property {number} seconds The seconds this video lasts
 	 * @property {boolean} opus Whether this video has an Opus stream available or not

@@ -8,7 +8,6 @@ const path = require('path');
 const Store = require('electron-store');
 const { fork } = require('child_process');
 const { AdjutantDiscord } = require('./discord/client');
-const HeadlessSandbox = require('./sandbox/test').HeadlessSandbox;
 
 console.log('');
 console.log("DEV WARNING!!!! Sandbox is currently disabled!!");
@@ -17,8 +16,6 @@ if (!app.requestSingleInstanceLock())
     app.quit();
 
 //app.enableSandbox();
-
-
 
 const store = new Store({
     schema: {
@@ -32,16 +29,7 @@ const store = new Store({
     cwd: path.resolve(rootPath, 'config')
 });
 
-//const Notifications = require('./overlay/notification/notification');
 const SoundWindow = require('./soundplayer/sound');
-
-/*if (store.get("discord.use")) {
-    this.VoiceClient = require('./discord/fork').VoiceClient;
-}*/
-
-//process.env.EDGE_APP_ROOT = path.resolve(rootPath, 'plugins');
-//process.env.EDGE_USE_CORECLR = 1;
-//This needs to be updated`
 
 var edge = require('electron-edge-js');
 var ipcBridge = edge.func({
@@ -53,12 +41,10 @@ var ipcBridge = edge.func({
 class MogsterUI {
 
     constructor() {
-        //this.notificationWindow = null;
         this.soundWindow = null;
         this.forkProcess = null;
         this.shuttingDown = false;
         this.discord = null;
-
     }
 
     async init() {
@@ -74,10 +60,13 @@ class MogsterUI {
         let token = store.get("discord.token");
         let channelID = store.get("discord.channel");
         let guildID = store.get("discord.guild");
+
         this.discord = new AdjutantDiscord(token, guildID, channelID, path.resolve(rootPath, 'audio'));
+
         await this.discord.login();
         await this.discord.join();
     }
+
     async playDiscordAudio(path) {
         if (this.discord !== null) {
             try {
@@ -86,8 +75,8 @@ class MogsterUI {
                 console.log(error);
             }
         }
-
     }
+
     async stopDiscordAudio() {
         if (this.discord !== null) {
             try {
@@ -97,11 +86,14 @@ class MogsterUI {
             }
         }
     }
+
     async stopDiscord() {
         if (this.discord !== null) {
             try {
                 await this.discord.disconnect();
-            } catch (exception) { }
+            } catch (exception) {
+                log.error(exception);
+            }
             this.discord = null;
         }
     }
@@ -114,7 +106,7 @@ class MogsterUI {
 
         var restartMethod = this.reloadSandbox.bind(this);
         this.forkProcess.on('exit', function (code) {
-            log.error("HeadlessSandbox process terminated unexpectedly. Restarting in 5 seconds.")
+            log.error("HeadlessSandbox process terminated unexpectedly. Restarting in 5 seconds.");
             setTimeout(restartMethod, 5000);
         })
 
@@ -170,14 +162,12 @@ class MogsterUI {
 
     async initApp() {
         app.on('before-quit', async (event) => {
-            //this.shutdownDiscord();
             await this.stopDiscord();
             this.shutdownSandbox();
-
         });
 
         app.on('ready', () => {
-            this.createNotificationWindow();
+            this.soundWindow = new SoundWindow();
 
             this.tray = new Tray(path.resolve(__dirname, '../', 'static/moogle.ico'));
             const menu = Menu.buildFromTemplate([
@@ -192,14 +182,15 @@ class MogsterUI {
                         ipcMain.emit("StopSound");
                     }
                 },
+                { type: 'separator' },
                 {
                     label: "Discord", submenu: [{
                         label: 'Use Discord', type: 'checkbox', checked: store.get("discord.use"), click: (item, window, event) => {
                             if (item.checked) {
-                                store.set("discord.use", true)
+                                store.set("discord.use", true);
                                 this.startDiscord();
                             } else {
-                                store.set("discord.use", false)
+                                store.set("discord.use", false);
                                 this.stopDiscord();
                                 
                             }
@@ -216,15 +207,11 @@ class MogsterUI {
                 },
 
                 { type: 'separator' },
-                { role: 'quit' } // "role": system prepared action menu
+                { role: 'quit' }
             ]);
             this.tray.setToolTip('Mogster');
 
             this.tray.setContextMenu(menu);
-        });
-
-        app.on('activate', () => {
-            //this.notificationWindow.show();
         });
     }
 
@@ -239,10 +226,6 @@ class MogsterUI {
         });
     }
 
-    createNotificationWindow() {
-        //this.notificationWindow = new Notifications();
-        this.soundWindow = new SoundWindow();
-    }
 }
 
 const mogsterUI = new MogsterUI();

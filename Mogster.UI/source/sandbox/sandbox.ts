@@ -3,12 +3,8 @@ import { resolve, extname } from 'path';
 import { NodeVM, VMScript } from 'vm2';
 import { EventEmitter2 } from 'eventemitter2';
 import * as winston from 'winston';
-//import { observe } from 'mobx';
-import {  CombatantManager } from '../ffxiv/bindings';
+import { Combatant, CombatantManager } from '../ffxiv/bindings';
 import * as edge  from 'electron-edge-js';
-
-
-
 
 
 if (process.send === undefined) {
@@ -18,7 +14,6 @@ if (process.send === undefined) {
 
 var scriptsFolder = process.argv[2];
 var rootPath = resolve(scriptsFolder, '../');
-console.log(resolve(rootPath, 'plugins/Mogster.Core.dll'));
 
 const ZoneReader = edge.func({
     assemblyFile: resolve(rootPath, 'plugins/Mogster.Core.dll'),
@@ -78,9 +73,6 @@ class HeadlessSandBox {
             }
         });
     }
-    resolveModule(location:string) {
-
-    }
 
     async wrap(script: string, directory: string, rootDirectory: string) {
         let vm = new NodeVM({
@@ -95,6 +87,9 @@ class HeadlessSandBox {
                     helper: {
                         getCurrentZone() {
                             return ZoneReader('', true);
+                        },
+                        wrapCombatant(combatant: Combatant) {
+                            return new Combatant(combatant);
                         }
                     },
                     sandboxfs: {

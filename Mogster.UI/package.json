@@ -15,9 +15,7 @@
     "scripts": "xcopy /Y dist-js\\ffxiv\\Combatant.js dist-js\\scripts\\ && xcopy /Y source\\soundplayer\\sound.html dist-js\\soundplayer\\",
     "postinstall": "electron-builder install-app-deps",
     "start": "tsc && yarn scripts && electron .",
-    "dist": "tsc && yarn scripts && electron-builder",
-    "dist:dir": "yarn dist -c.compression=maximum",
-    "dist:test": "yarn dist -c.asar=false"
+    "dist": "tsc && yarn scripts && electron-builder"
   },
   "devDependencies": {
     "@types/electron-store": "^1.3.1",

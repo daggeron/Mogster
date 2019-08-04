@@ -1,4 +1,6 @@
-﻿export class Combatant {
+﻿const { decorate, observable } = require('mobx');
+
+export class Combatant {
 
     readonly Name: string;
     readonly ID: number;
@@ -6,6 +8,9 @@
     CurrentHP: number;
     TargetID: number;
     MaxHP: number;
+    IsAggressive: boolean;
+    InCombat: boolean;
+    IsAgroed: boolean;
 
     constructor(combatant: Combatant) {
 
@@ -16,6 +21,9 @@
         this.MaxHP = combatant.MaxHP;
         this.CurrentHP = combatant.CurrentHP;
         this.TargetID = combatant.TargetID;
+        this.IsAggressive = combatant.IsAggressive;
+        this.InCombat = combatant.InCombat;
+        this.IsAgroed = combatant.IsAgroed;
     }
 
     update(combatant: Combatant) {
@@ -28,6 +36,16 @@
         if (this.TargetID !== combatant.TargetID)
             this.TargetID = combatant.TargetID;
 
+        this.InCombat = combatant.InCombat;
+        this.IsAgroed = combatant.IsAgroed;
     }
 
 }
+
+decorate(Combatant, {
+    CurrentHP: observable,
+    MaxHP: observable,
+    TargetID: observable,
+    InCombat: observable,
+    IsAgroed: observable
+});

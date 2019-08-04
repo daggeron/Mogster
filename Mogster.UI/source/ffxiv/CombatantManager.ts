@@ -1,69 +1,47 @@
-﻿//import { Combatant } from './Combatant';
-//import { resolve } from 'path';
+﻿import { Combatant } from './Combatant';
+import { resolve } from 'path';
 
-//import * as edge from 'electron-edge-js';
+import * as edge from 'electron-edge-js';
 
-
+/*
+ * Note: This may change in the future.  
+ * However, from the end user perspective it doesn't make a difference.
+ * 
+ * Note: Edgejs instantiates a new instance each time we bind edge.func
+ */
 export class CombatantManager {
     rootPath: string;
-    /*getCombatantFunction: edge.Func<unknown, unknown>;    
-    getCombatantListFunction: edge.Func<unknown, unknown>; 
-    getCurrentPlayerFunction: edge.Func<unknown, unknown>; */
+    getCombatantFunction: edge.Func<number, Combatant>;    
+    //getCombatantListFunction: edge.Func<unknown, unknown>;
+    getCurrentPlayerFunction: edge.Func<any, Combatant>; 
 
 
     constructor(rootPath:string) {
         this.rootPath = rootPath;
-        /*this.getCombatantFunction = edge.func({
+        this.getCombatantFunction = edge.func({
             assemblyFile: resolve(rootPath, 'plugins/Mogster.Core.dll'),
-            typeName: 'Mogster.Core.Program',
+            typeName: 'Mogster.Core.EdgeBindings.CombatantManagerReader',
             methodName: 'GetCombatant'
         });
+
         this.getCurrentPlayerFunction = edge.func({
             assemblyFile: resolve(rootPath, 'plugins/Mogster.Core.dll'),
-            typeName: 'Mogster.Core.Program',
+            typeName: 'Mogster.Core.EdgeBindings.CombatantManagerReader',
             methodName: 'GetCurrentPlayer'
         });
-        this.getCombatantListFunction = edge.func({
+        /*this.getCombatantListFunction = edge.func({
             assemblyFile: resolve(rootPath, 'plugins/Mogster.Core.dll'),
             typeName: 'Mogster.Core.Program',
             methodName: 'GetCombatantList'
         });*/
     }
 
-    getCurrentPlayer() {
-        //let $engine = this;
-        /*return new Promise<Combatant>(function (resolve, reject) {
-            $engine.getCurrentPlayerFunction('', function (error, result: any) {
-                if (error) {
-                    reject(error);
-                } else {
-                    if (result === null) {
-                        reject(new Error("Could not find you!"));
-                        return;
-                    }
-                    let combatant = new Combatant(result);
-                    resolve(combatant);
-                }
-            });
-        });*/
+    getCurrentPlayer(): Combatant {
+        return new Combatant(this.getCurrentPlayerFunction('', true));
     }
 
     getCombatant(id: number) {
-        //let $engine = this;
-        /*return new Promise<Combatant>(function (resolve, reject) {
-            $engine.getCombatantFunction(id, function (error, result: any) {
-                if (error) {
-                    reject(error);
-                } else {
-                    if (result === null) {
-                        reject(new Error("Null combatant"));
-                        return;
-                    }
-                    let combatant = new Combatant(result);
-                    resolve(combatant);
-                }
-            });
-        });*/
+        return new Combatant(this.getCombatantFunction(id, true));
     }
 
     getCombatantList() {
