@@ -9,27 +9,27 @@
  * 
  */
 
-const { EventEmitter2 } = require("eventemitter2")
-const { Combatant } = require('../../libs/combatant');
-const { observe, decorate, observable } = require('mobx');
+const sandboxfs = require('sandboxfs');
+const helper = require('helper');
+const { decorate, observable } = require('mobx');
+const { EventEmitter2 } = require("eventemitter2");
 
 function Send(emitter, event, payload) {
     emitter.emit(event, payload, true);
 }
 
 
-
 class SeiryuEX {
     constructor(remoteEmitter) {
         this.eventEmitter = remoteEmitter;
-       
+
         this.eventEmitter.on('CombatantAdded', (combatant) => {
             console.log("Hello");
             if (combatant.Name === "Seiryu" && combatant.Level === 46) {
                 console.log("I think I found the correct one");
                 console.log(combatant);
             }
-            
+
         });
 
     }
@@ -39,6 +39,12 @@ class SeiryuEX {
     }
 
     static get EncounterDetails() {
+
+        sandboxfs.readdir("./").forEach(element => {
+            console.log(element);
+        });
+
+
         return { id: "Wreath of Snakes EX", zone: 825 };
     }
 

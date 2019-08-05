@@ -1,5 +1,7 @@
 ﻿const sandboxfs = require('sandboxfs');
 const helper = require('helper');
+const { decorate, observable } = require('mobx');
+const { EventEmitter2 } = require("eventemitter2");
 
 var zoneList = new Set();
 var cachedMap = new Map();
@@ -9,11 +11,10 @@ var currentEncounterEmitterCallback = null;
 
 var currentPlayer = null;
 
-
 function scanForEncounters() {
-    sandboxfs.readdir("./adjutant/encounters").forEach(element => {
+    sandboxfs.readdir("./research/encounters").forEach(element => {
         try {
-            let encounter = require(sandboxfs.resolve("./adjutant/encounters", element));
+            let encounter = require(sandboxfs.resolve("./research/encounters", element));
             let encounterZone = encounter.EncounterDetails.zone;
             let encounterID = encounter.EncounterDetails.id;
 
