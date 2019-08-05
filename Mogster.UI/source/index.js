@@ -3,14 +3,42 @@
 const { app, ipcMain, Menu, Tray } = require('electron');
 const process = require('process');
 const rootPath = require('electron-root-path').rootPath;
-const log = require('electron-log');
+
 const path = require('path');
 const Store = require('electron-store');
 const { fork } = require('child_process');
 const { AdjutantDiscord } = require('./discord/client');
 
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, label, printf } = format;
+
+const myFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} [${label}] ${level}: ${message}`;
+});
+
+
+console.log(console);
+
+const log = createLogger({
+    format: combine(
+        format.timestamp({ format: 'HH:mm:ss' }),
+        format.colorize({ all: true }),
+        format.prettyPrint(),
+        label({ label: 'Main Process' }),
+        timestamp(),
+        myFormat
+    ),
+    transports: [new transports.Console()]
+});
+
+
+//Used by ffmpeg-static (our build) to identify where ffmpeg.exe sits
+global.__basedirxx = rootPath;
+
+//This fixes a small console formatting glitch
 console.log('');
-console.log("DEV WARNING!!!! Sandbox is currently disabled!!");
+
+log.warn("DEV WARNING!!!! Sandbox is currently disabled!!");
 
 if (!app.requestSingleInstanceLock())
     app.quit();
@@ -72,7 +100,7 @@ class MogsterUI {
             try {
                 await this.discord.play(path);
             } catch (error) {
-                console.log(error);
+                log.error(error);
             }
         }
     }
@@ -82,7 +110,7 @@ class MogsterUI {
             try {
                 await this.discord.stop();
             } catch (error) {
-                console.log(error);
+                log.error(error);
             }
         }
     }
@@ -201,7 +229,7 @@ class MogsterUI {
                         }
                     }, {
                         label: 'Play Test Sound', click: (item, window, event) => {
-                            this.playDiscordAudio('belltollnightelf.ogg');
+                            this.playDiscordAudio('mogster_test.mp3');
                         }
                     }]
                 },

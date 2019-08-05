@@ -1,12 +1,23 @@
 ﻿const fs = require('fs');
+const path = require('path');
 
-const winston = require('winston');
-const log = winston.createLogger({
-    level: 'info',
-    format: winston.format.simple(),
-    transports: [
-        new winston.transports.Console({ format: winston.format.simple() })
-    ]
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, label, printf } = format;
+
+const myFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} [${label}] ${level}: ${message}`;
+});
+
+const log = createLogger({
+    format: combine(
+        format.timestamp({ format: 'HH:mm:ss' }),
+        format.colorize({ all: true }),
+        format.prettyPrint(),
+        label({ label: 'Audio Manager' }),
+        timestamp(),
+        myFormat
+    ),
+    transports: [new transports.Console()]
 });
 
 class AudioManager {
@@ -144,12 +155,15 @@ class AudioManager {
             await this.join(voiceChannel);
             if (!this.connection) throw 'This dj table is broken! Try again later...';
         }
-
-        this.connection.play(path, {
-            bitrate: this.voiceChannel.bitrate / 1000,
-            passes: 2,
-            volume: 0.5
-        });
+        try {
+            this.connection.play(path, {
+                bitrate: this.voiceChannel.bitrate / 1000,
+                passes: 2,
+                volume: 0.5
+            });
+        } catch (error) {
+            log.error(error);
+        }
 
         return this.dispatcher;
     }

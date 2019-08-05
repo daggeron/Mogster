@@ -2,13 +2,44 @@
 import { resolve, extname } from 'path';
 import { NodeVM, VMScript } from 'vm2';
 import { EventEmitter2 } from 'eventemitter2';
-import * as winston from 'winston';
+
 import { Combatant, CombatantManager } from '../ffxiv/bindings';
 import * as edge  from 'electron-edge-js';
 
+import * as winston from 'winston';
+
+const { combine, timestamp, label, printf } = winston.format;
+
+const myFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} [${label}] ${level}: ${message}`;
+});
+
+const log = winston.createLogger({
+    format: combine(
+        winston.format.timestamp({ format: 'HH:mm:ss' }),
+        winston.format.colorize({ all: true }),
+        winston.format.prettyPrint(),
+        label({ label: 'Sandbox' }),
+        timestamp(),
+        myFormat
+    ),
+    transports: [new winston.transports.Console()]
+});
+
+const scriptLog = winston.createLogger({
+    format: combine(
+        winston.format.timestamp({ format: 'HH:mm:ss' }),
+        winston.format.colorize({ all: true }),
+        winston.format.prettyPrint(),
+        label({ label: 'Sandboxed Script' }),
+        timestamp(),
+        myFormat
+    ),
+    transports: [new winston.transports.Console()]
+});
 
 if (process.send === undefined) {
-    console.log("Either we were called directly or something bad happened.");
+    log.error("Either we were called directly or something bad happened.");
     process.exit(-1);
 }
 
@@ -20,17 +51,6 @@ const ZoneReader = edge.func({
     typeName: 'Mogster.Core.EdgeBindings.ZoneRead'
 });
 
-const log: winston.Logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.combine(
-        winston.format.simple(),
-        winston.format.timestamp()),
-    transports: [
-        new winston.transports.File({ filename: resolve(scriptsFolder, 'error.log'), level: 'error' }),
-        new winston.transports.File({ filename: resolve(scriptsFolder, 'combined.log') }),
-        new winston.transports.Console({ format: winston.format.simple() })
-    ]
-});
 
 //embedding it here as asar is a pita.
 class HeadlessSandBox {
@@ -60,28 +80,28 @@ class HeadlessSandBox {
 
     async scan(folder:string) {
         if (!existsSync(folder)) {
-            throw "Could not locate specified path [" + folder + "]";
+            throw `Could not locate specified path [${folder}]`;
         }
-        this.listDirectories(folder).forEach((directory) => {
+
+        this.listDirectories(folder).forEach((directory:any) => {
 
             let scriptPath = resolve(folder, directory, 'index.js');
 
-            //log.info(scriptPath);
-
             if (existsSync(scriptPath)) {
-                this.wrap(scriptPath, resolve(folder, directory), folder);
+                this.wrap(scriptPath, resolve(folder, directory), folder, directory);
             }
         });
     }
 
-    async wrap(script: string, directory: string, rootDirectory: string) {
+    async wrap(script: string, directory: string, rootDirectory: string, moduleName: string) {
         let vm = new NodeVM({
-            console: 'inherit',
-            sandbox: { EventEmitter2 },
+            console: 'redirect',
             require: {
-                context: 'host',
-                resolve: moduleName => resolve(rootDirectory, 'libs', moduleName.toString()),
-                external: ['eventemitter2', 'mobx'],
+                context: 'sandbox',
+                resolve: (moduleName: any) => {
+                    return resolve(rootDirectory, 'libs', moduleName);
+                },
+                external: true,
                 root: rootDirectory,
                 mock: {
                     helper: {
@@ -113,12 +133,23 @@ class HeadlessSandBox {
         vm.freeze(this.eventEmitter, 'emitter');
         vm.freeze(this.CombatantManager, "CombatantManager");
 
+        vm.on('console.log', (...args: any) => {
+            scriptLog.info(`[${moduleName}]: ` + args.join(''));
+        });
+
+        vm.on('console.debug', (...args:any) => {
+            scriptLog.debug(`[${moduleName}]: ` + args.join(''));
+        });
+
+        vm.on('console.error', (...args:any) => {
+            scriptLog.error(`[${moduleName}]: ` + args.join(''));
+        });
+
         try {
             let script2 = new VMScript(readFileSync(script).toString(), directory);
             vm.run(script2, script);
         } catch (ex) {
-            console.log(ex);
-            log.error(ex);
+            log.error(JSON.stringify(ex, ["stack"], '\t'));
 
             (<any>process).send({ 'internal_event': 'error', 'payload': "Hello" });
         }
