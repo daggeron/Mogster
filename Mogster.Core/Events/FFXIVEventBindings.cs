@@ -44,16 +44,13 @@ namespace Mogster.Core.Events
 
             dataEvent.EffectAdded += new DataEvent.EffectAddedDelegate(OnEffectAdded);
 
-            eventAggregator.GetEvent<ZoneRefreshEvent>().Subscribe(OnZoneRefreshRequest);
-            eventAggregator.GetEvent<GenericEvent<CombatChange>>().Subscribe(OnCombatChange);
             eventAggregator.GetEvent<EntityHasDiedEvent>().Subscribe(OnEntityDeath);
-
         }
 
         private void OnEffectAdded(object effect)
         {
             string json = JsonConvert.SerializeObject(effect, Formatting.Indented);
-            Console.WriteLine(json);
+            Logger.Debug(json);
 
             eventAggregator.GetEvent<IPCMessageEvent>().Publish(IPCMessage.Get(MessageType.EffectAdded, (Effect)effect));
         }
@@ -82,12 +79,6 @@ namespace Mogster.Core.Events
         {
             FFXIV_ACT_Plugin.Common.Models.Combatant addedCombatant = (FFXIV_ACT_Plugin.Common.Models.Combatant)combatant;
             eventAggregator.GetEvent<IPCMessageEvent>().Publish(IPCMessage.Get(MessageType.CombatantRemoved, addedCombatant));
-        }
-
-        private void OnCombatChange(CombatChange combatChange)
-        {
-            Logger.Debug("OnCombatChange");
-            //   iPCSystem.SendMessage(MessageType.CombatStatusChanged, combatChange);
         }
 
         private void OnEntityDeath(CombatDeath combatDeath)

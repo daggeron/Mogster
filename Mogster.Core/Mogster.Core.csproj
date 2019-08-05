@@ -136,7 +136,6 @@
     <Compile Include="Events\CombatantRefreshEvent.cs" />
     <Compile Include="Events\PrismEvents\ISystemMessageEvent.cs" />
     <Compile Include="Events\PrismEvents\IPCMessageEvent.cs" />
-    <Compile Include="Events\IsWatchingCutscene.cs" />
     <Compile Include="Events\FFXIVEventBindings.cs" />
     <Compile Include="Events\SystemEvents\DutyLockoutUpdate.cs" />
     <Compile Include="Events\SystemEvents\DutyStart.cs" />
@@ -149,7 +148,6 @@
     <None Include="Harness\FFXIVPlugin\CombatantProcessor.cs" />
     <Compile Include="Harness\FFXIVPlugin\DataCollection.cs" />
     <Compile Include="Events\ShutdownEvent.cs" />
-    <Compile Include="Events\ZoneRefreshEvent.cs" />
     <Compile Include="Harness\FFXIVPluginHarness.cs" />
     <Compile Include="Harness\FFXIVPlugin\ScanHPPercent.cs" />
     <None Include="Harness\SharlayanHarness.cs" />
@@ -158,12 +156,9 @@
     <Compile Include="Helpers\BobParser.cs" />
     <Compile Include="Helpers\EventManager.cs" />
     <Compile Include="Helpers\Firewall.cs" />
-    <None Include="Helpers\LINQExtensions.cs" />
     <Compile Include="Helpers\NativeMethods.cs" />
     <Compile Include="Harness\FFXIVPlugin\ScanMemory.cs" />
-    <Compile Include="Models\Combatant64Struct.cs" />
     <Compile Include="Models\CombatantEx.cs" />
-    <Compile Include="Models\CombatChange.cs" />
     <Compile Include="Models\NetworkAbility.cs" />
     <Compile Include="Models\NetworkBuff.cs" />
     <Compile Include="Models\NetworkCast.cs" />
@@ -181,7 +176,6 @@
     <Compile Include="Harness\FFXIVPlugin\BlankLogOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="TestScanMemory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

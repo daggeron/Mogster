@@ -23,6 +23,9 @@ using Machina;
 using Mogster.Core.Harness.FFXIVPlugin;
 using FFXIV_ACT_Plugin.Memory.MemoryReader;
 using Mogster.Core.Models;
+using NLog.Config;
+using NLog.Targets;
+using NLog;
 
 namespace Mogster.Core
 {
@@ -49,8 +52,21 @@ namespace Mogster.Core
 
         public Program()
         {
+
+
+            var config = new LoggingConfiguration();
+
+            // Step 2. Create targets
+            var consoleTarget = new ColoredConsoleTarget("target1")
+            {
+                Layout = @"${date:format=HH\:mm\:ss} [${logger}] ${level:uppercase=false}: ${message} ${exception}"
+            };
+            config.AddTarget(consoleTarget);
+            config.AddRuleForAllLevels(consoleTarget); // all to console
+            LogManager.Configuration = config;
+
+
             Logger.Info("FFXIV Harness has been constructed");
-            Console.WriteLine("FFXIV Harness has been constructed");
 
             ffxivPlugin = new FFXIVPluginHarness();
             ffxivPlugin.IoCContainer.Register<IEventAggregator, EventAggregator>().AsSingleton();
@@ -141,7 +157,7 @@ namespace Mogster.Core
                         Server_MessageType messageType = ((Server_MessageHeader*)buffer)->MessageType;
                         //                        if (messageType == Server_MessageType.)
                         //{
-                        Console.WriteLine(messageHeader->LoginUserID + " " + messageType);
+                        Logger.Debug(messageHeader->LoginUserID + " " + messageType);
                         //}
                     }
                 }
@@ -167,7 +183,7 @@ namespace Mogster.Core
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Logger.Error(ex);
                     throw ex;
                 }
 
@@ -183,12 +199,9 @@ namespace Mogster.Core
                         bool IsAggressive = (ptr->CombatFlags & (1 << 0)) != 0;
 
                         bool IsAgroed = (ptr->AgroFlags & 1) > 0;
-                        Console.WriteLine(IsAggressive + " " + IsAgroed + " " + InCombat);
+                        Logger.Debug(IsAggressive + " " + IsAgroed + " " + InCombat);
                     }
-
-
                 }
-
             };
             testTimer.Start();
             /*_monitor.MessageReceived = delegate (string id, long epoch, byte[] message)
@@ -282,7 +295,7 @@ namespace Mogster.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Logger.Error(ex);
                 throw ex;
             }
 
@@ -306,7 +319,7 @@ namespace Mogster.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Logger.Error(ex);
             }
 
             return null;
