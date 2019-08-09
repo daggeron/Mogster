@@ -38,13 +38,13 @@ class SoundWindow extends BrowserWindow {
             transparent: false,
             alwaysOnTop: false
         });
-        
-        this.loadFile(path.resolve(rootPath, 'dist-js/soundplayer/sound.html'));
+
+        this.loadFile('./dist-js/soundplayer/sound.html');
 
         //This will not fire if show is set to true
         this.once('ready-to-show', () => {
             this.wireEvents();
-        })
+        });
     }
 
     wireEvents() {

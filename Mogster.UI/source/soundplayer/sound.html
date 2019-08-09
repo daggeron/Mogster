@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-    <script type="text/javascript" src="./js/howler.min.js"></script>
+    <script type="text/javascript" src="../../node_modules/howler/dist/howler.min.js"></script>
     <script>
         const { ipcRenderer } = require('electron')
         const rootPath = require('electron-root-path').rootPath;
@@ -26,9 +26,11 @@
         })
 
         ipcRenderer.on('PlaySound', (event, sound) => {
-            
+            console.log("sound");
             PlaySound(path.resolve(rootPath, "audio", sound));
         })
     </script>
+    test
+    test
 </body>
 </html>
