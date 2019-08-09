@@ -9,6 +9,8 @@ const Store = require('electron-store');
 const { fork } = require('child_process');
 const { AdjutantDiscord } = require('./discord/client');
 
+const SoundWindow = require('./soundplayer/sound');
+
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, printf } = format;
 
@@ -56,8 +58,6 @@ const store = new Store({
     },
     cwd: path.resolve(rootPath, 'config')
 });
-
-const SoundWindow = require('./soundplayer/sound');
 
 var edge = require('electron-edge-js');
 var ipcBridge = edge.func({
@@ -140,6 +140,7 @@ class MogsterUI {
 
         this.forkProcess.on('message', data => {
             log.info("Message received");
+            console.log(data);
 
             if (data.hasOwnProperty("internal_event")) {
                 log.error(data);

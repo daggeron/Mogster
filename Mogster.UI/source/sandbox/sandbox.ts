@@ -102,6 +102,7 @@ class HeadlessSandBox {
                     return resolve(rootDirectory, 'libs', moduleName);
                 },
                 external: true,
+                builtin: ['assert'],
                 root: rootDirectory,
                 mock: {
                     helper: {
@@ -110,6 +111,9 @@ class HeadlessSandBox {
                         },
                         wrapCombatant(combatant: Combatant) {
                             return new Combatant(combatant);
+                        },
+                        sendEvent(event: string, payload: string) {
+                            (<any>process).send({ 'event': event, 'payload': payload });
                         }
                     },
                     sandboxfs: {
@@ -134,7 +138,22 @@ class HeadlessSandBox {
         vm.freeze(this.CombatantManager, "CombatantManager");
 
         vm.on('console.log', (...args: any) => {
-            scriptLog.info(`[${moduleName}]: ` + args.join(''));
+            let message: string = '';
+
+            args.forEach((element:any) => {
+                let elementType:string = typeof element;
+                switch (elementType) {
+                    case 'string':
+                    case 'number':
+                        message += element; 
+                        break;
+                    default:
+                        message += JSON.stringify(element);
+                        break;
+                }
+            });
+
+            scriptLog.info(`[${moduleName}]: ${message}`);
         });
 
         vm.on('console.debug', (...args:any) => {
@@ -169,8 +188,9 @@ process.on('message', message => {
     }
 });
 
-sandbox.emitter.onAny(function (event, value, inbound) {
+sandbox.emitter.onAny(function (event:any, value:any, inbound:any) {
     if (inbound !== true) {
+        log.info(event, value);
         (<any>process).send({ 'event': event, 'payload': value });
     }
 });
