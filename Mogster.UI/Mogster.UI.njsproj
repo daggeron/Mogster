@@ -36,15 +36,11 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="package.json" />
-    <Content Include="scripts\research\encounters\hourglass.js" />
-    <Content Include="scripts\research\encounters\eulmore.js" />
-    <Content Include="scripts\research\encounters\seiryu.js">
+    <Content Include="scripts\research\encounters\hourglassinn.js" />
+    <Content Include="scripts\research\index.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="scripts\research\encounters\template.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="scripts\research\index.js" />
+    <Content Include="scripts\research\index2.js" />
     <Content Include="scripts\Combatant.js" />
     <Content Include="scripts\libs\combatant.js" />
     <Content Include="source\discord\AudioManager.js">
@@ -112,8 +108,9 @@
   <ItemGroup>
     <Folder Include="scripts\" />
     <Folder Include="scripts\research\" />
-    <Folder Include="scripts\research\encounters\" />
     <Folder Include="scripts\libs\" />
+    <Folder Include="scripts\research\encounters\" />
+    <Folder Include="scripts\research\global\" />
     <Folder Include="source\" />
     <Folder Include="source\discord\" />
     <Folder Include="source\ffxiv\" />
