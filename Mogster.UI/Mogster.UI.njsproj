@@ -36,7 +36,12 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="package.json" />
-    <Content Include="scripts\research\encounters\seiryuex.js">
+    <Content Include="scripts\research\encounters\hourglass.js" />
+    <Content Include="scripts\research\encounters\eulmore.js" />
+    <Content Include="scripts\research\encounters\seiryu.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="scripts\research\encounters\template.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="scripts\research\index.js" />
@@ -94,7 +99,6 @@
     <Content Include="source\overlay\notification\notification.html" />
     <Content Include="source\overlay\notification\notification.js" />
     <Content Include="source\overlay\notification\preload-simple.js" />
-    <Content Include="source\soundplayer\js\howler.min.js" />
     <Content Include="source\soundplayer\sound.html" />
     <Content Include="source\soundplayer\sound.js" />
     <Content Include="source\static\Mog.ico" />
@@ -123,7 +127,6 @@
     <Folder Include="source\overlay\notification\js\" />
     <Folder Include="source\sandbox\" />
     <Folder Include="source\soundplayer\" />
-    <Folder Include="source\soundplayer\js\" />
     <Folder Include="source\static\" />
     <Folder Include="static\" />
   </ItemGroup>

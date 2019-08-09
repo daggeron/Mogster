@@ -36,6 +36,7 @@
     "eventemitter2": "^5.0.1",
     "ffmpeg-static": "E:/repo/ffmpeg-static",
     "fs-nextra": "^0.4.5",
+    "howler": "^2.1.2",
     "mobx": "^5.13.0",
     "node-opus": "^0.3.2",
     "pretty-error": "^2.1.1",
@@ -49,7 +50,6 @@
     "directories": {
       "output": "..\\dist"
     },
-    
     "files": [
       "**/*",
       "!source${/*}",
