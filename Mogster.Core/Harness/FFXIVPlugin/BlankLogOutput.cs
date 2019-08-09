@@ -125,11 +125,13 @@ namespace Mogster.Core.Harness.FFXIVPlugin
                 case LogMessageType.Network6D:
                     ISystemMessage systemEvent = BobParser.ParseNetwork6D(ServerDate, line);
 
+                    Console.WriteLine(systemEvent.MessageType);
+
                     eventAggregator.GetEvent<IPCMessageEvent>().Publish(IPCMessage.Get(systemEvent.MessageType, systemEvent));
                     break;
                 case LogMessageType.NetworkBuff:
                     NetworkBuff networkBuff = BobParser.ParseNetworkEffect(ServerDate, line);
-
+                    
                     eventAggregator.GetEvent<IPCMessageEvent>().Publish(IPCMessage.Get(MessageType.EffectAdded, networkBuff));
                     break;
                 case LogMessageType.NetworkBuffRemove:

@@ -71,7 +71,6 @@ namespace Mogster.Core.Helpers
                 ActorName = chunks[4],
                 TargetID = UInt32.Parse(chunks[5], System.Globalization.NumberStyles.HexNumber),
                 TargetName = chunks[5]
-                //BuffExtra = chunksUInt16.Parse(chunks[6], System.Globalization.NumberStyles.HexNumber),
             };
 
             return networkBuff;
@@ -83,6 +82,9 @@ namespace Mogster.Core.Helpers
             String[] chunks = logLine.Split(new[] { '|' }, StringSplitOptions.None);
             String opCode = chunks[1];
             switch (opCode) {
+                /*case "40000010":*/
+                case "40000012":
+                    return new DutyWipe();
                 case "40000003":
                     return new DutyComplete();
                 case "40000001":

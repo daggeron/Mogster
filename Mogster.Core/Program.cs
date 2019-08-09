@@ -267,7 +267,10 @@ namespace Mogster.Core
 
             test();
 
-            eventAggregator.GetEvent<IPCMessageEvent>().Subscribe((message) => this.callBack.Invoke(message.ToString()), ThreadOption.BackgroundThread);
+            eventAggregator.GetEvent<IPCMessageEvent>().Subscribe((message) =>
+            {
+                this.callBack.Invoke(message.ToString());
+            }, ThreadOption.BackgroundThread);
 
             callBack.Invoke("{'hello':'world'}");
 

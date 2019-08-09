@@ -137,6 +137,7 @@
     <Compile Include="Events\PrismEvents\ISystemMessageEvent.cs" />
     <Compile Include="Events\PrismEvents\IPCMessageEvent.cs" />
     <Compile Include="Events\FFXIVEventBindings.cs" />
+    <Compile Include="Events\SystemEvents\DutyWipe.cs" />
     <Compile Include="Events\SystemEvents\DutyLockoutUpdate.cs" />
     <Compile Include="Events\SystemEvents\DutyStart.cs" />
     <Compile Include="Events\SystemEvents\ISystemMessage.cs" />
