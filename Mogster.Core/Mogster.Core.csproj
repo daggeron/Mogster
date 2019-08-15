@@ -129,6 +129,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EdgeBindings\CombatantManagerReader.cs" />
+    <Compile Include="EdgeBindings\EventLoop.cs" />
+    <Compile Include="EdgeBindings\WindowsFirewall.cs" />
     <Compile Include="EdgeBindings\ZoneRead.cs" />
     <Compile Include="Events\EffectEvents\EffectAddedEvent.cs" />
     <Compile Include="Events\EntityHasDiedEvent.cs" />

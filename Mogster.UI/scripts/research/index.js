@@ -66,9 +66,9 @@ const serializeError = value => {
 
 function scanForEncounters() {
 
-    sandboxfs.readdir("./research/encounters2").forEach(element => {
+    sandboxfs.readdir("./research/encounters").forEach(element => {
         try {
-            let encounter = require(sandboxfs.resolve("./research/encounters2", element));
+            let encounter = require(sandboxfs.resolve("./research/encounters", element));
 
             if (cachedMap.has(encounter.details.zone) ||
                 encounterMap.has(encounter.details.zone)) {
