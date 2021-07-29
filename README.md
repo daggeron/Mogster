@@ -4,20 +4,15 @@
   <p></p>
   <p>   
 </div>  
-<h2>Features</h2>
-
-- Working on it >.<
 
 <h2>System requirements</h2>
 
-- Final Fantasy 14 (duh?)
+- Final Fantasy 14 
 - .NET-Framework 4.6
-- Advance Combat Tracker (Working on this >.<)
-- FFXIV ACT Plugin (I guess we can provide auto download of the latest version)
+- Advance Combat Tracker 
+- FFXIV ACT Plugin 
 
 <h2>Found a bug?</h2>
-
-Check the [Issues](https://github.com/daggeron/Mogster/issues) if the bug has already been reported. If not, submit a [new issue](https://github.com/daggeron/Mogster/issues/new) and provide as many informations as you can.
 
 <h2>License</h2>
 
