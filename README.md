@@ -12,8 +12,6 @@
 - Advance Combat Tracker 
 - FFXIV ACT Plugin 
 
-<h2>Found a bug?</h2>
-
 <h2>License</h2>
 
 This software is published under the [MIT License](https://github.com/daggeron/Mogster/blob/master/LICENSE).
